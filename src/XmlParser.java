@@ -63,11 +63,14 @@ public class XmlParser {
             student.sex = element.getElementsByTagName("sex").item(0).getTextContent();
 
             student.birthday = element.getElementsByTagName("birthday").item(0).getTextContent();
-
+            
             student.personDocument.id = element.getElementsByTagName("person_document").item(0).getAttributes().getNamedItem("ID").getTextContent();
             student.personDocument.number = element.getElementsByTagName("person_document").item(0).getAttributes().getNamedItem("number").getTextContent();
             student.personDocument.seria = element.getElementsByTagName("person_document").item(0).getAttributes().getNamedItem("seria").getTextContent();
-
+            
+            student.diplom.number = element.getElementsByTagName("diplom").item(0).getAttributes().getNamedItem("number").getTextContent();
+            student.diplom.seria = element.getElementsByTagName("diplom").item(0).getAttributes().getNamedItem("seria").getTextContent();
+            
             student.honor = element.getElementsByTagName("honor").item(0).getTextContent();
 
             student.prevDocument.id = element.getElementsByTagName("prev_document").item(0).getAttributes().getNamedItem("ID").getTextContent();

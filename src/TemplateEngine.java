@@ -11,6 +11,7 @@ import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.usermodel.PositionInParagraph;
 import org.apache.poi.xwpf.usermodel.TextSegement;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFFooter;
 import org.apache.poi.xwpf.usermodel.XWPFFootnote;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -29,7 +30,7 @@ public class TemplateEngine {
     Order order;
     List<Student> students;
 
-    String templateFileName = "E:\\unn\\sh5.docx";
+    String templateFileName = "E:\\unn\\sh6.docx";
     String destination = "E:\\unn\\result\\";
     String xmlFileName = "E:\\unn\\file.xml";
     String docFileName = "E:\\unn\\doc.docx";
@@ -61,9 +62,9 @@ public class TemplateEngine {
 
             replaceInParagraphs(RuleListTable, doc.getParagraphs());
 
-            // print textboxes
-            for (XWPFParagraph p : doc.getParagraphs()) {
-                printContentsOfTextBox(p);
+            // footer in pages
+            for (XWPFFooter p : doc.getFooterList()) {
+                replaceInParagraphs(RuleListTable, p.getParagraphs());
             }
 
             for (XWPFTable tbl : doc.getTables()) {

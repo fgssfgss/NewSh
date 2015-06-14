@@ -70,6 +70,7 @@ public class TemplateEngine {
                 RuleListTable.add(new ReplaceRule("%xml_grade".concat(marksCount.toString()).concat("%"), d.nationalMark));
                 RuleListTable.add(new ReplaceRule("%l".concat(marksCount.toString()).concat("%"), d.ectsMark));
             }
+            // don't work, maybe I'm too dumb for this shit?
             for (int i = marksCount; i <= 30; i++) {
                 RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), " "));

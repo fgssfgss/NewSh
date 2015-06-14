@@ -28,6 +28,7 @@ public class Student {
     public String sex;
     public String birthday;
     public String honor;
+    public String honorEn;
     public String receiptDay;
     public String payment;
     public List<Discipline> marks;

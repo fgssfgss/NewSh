@@ -30,7 +30,7 @@ public class TemplateEngine {
     Order order;
     List<Student> students;
 
-    String templateFileName = "E:\\unn\\sh6.docx";
+    String templateFileName = "E:\\unn\\sh7.docx";
     String destination = "E:\\unn\\result\\";
     String xmlFileName = "E:\\unn\\file.xml";
     String docFileName = "E:\\unn\\doc.docx";
@@ -49,20 +49,39 @@ public class TemplateEngine {
 
             List<ReplaceRule> RuleListTable = new ArrayList<>();
 
-            RuleListTable.add(new ReplaceRule("xml_lname_eng", stud.lastName.en));
-            RuleListTable.add(new ReplaceRule("xml_lname", stud.lastName.ua));
-            RuleListTable.add(new ReplaceRule("xml_fmname_eng", stud.firstName.en));
-            RuleListTable.add(new ReplaceRule("xml_fmname", stud.firstName.ua));
+            RuleListTable.add(new ReplaceRule("%xml_lname_eng%", stud.lastName.en));
+            RuleListTable.add(new ReplaceRule("%xml_lname%", stud.lastName.ua));
+            RuleListTable.add(new ReplaceRule("%xml_fmname_eng%", stud.firstName.en));
+            RuleListTable.add(new ReplaceRule("%xml_fmname%", stud.firstName.ua));
+            
+            RuleListTable.add(new ReplaceRule("%xml_honor_eng%", stud.honorEn));
+            RuleListTable.add(new ReplaceRule("%xml_honor%", stud.honor));
+            
+            RuleListTable.add(new ReplaceRule("%xml_birthday%", stud.birthday));
+            RuleListTable.add(new ReplaceRule("%xml_S%", stud.diplom.seria));
+            RuleListTable.add(new ReplaceRule("%xml_N%", stud.diplom.number));
 
-            RuleListTable.add(new ReplaceRule("xml_birthday", stud.birthday));
-            RuleListTable.add(new ReplaceRule("xml_S", stud.diplom.seria));
-            RuleListTable.add(new ReplaceRule("xml_N", stud.diplom.number));
+            Integer marksCount = 0;
+            for (Discipline d : stud.marks) {
+                marksCount++;
+                RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), marksCount.toString()));
+                RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), d.name));
+                RuleListTable.add(new ReplaceRule("%m".concat(marksCount.toString()).concat("%"), d.mark));
+                RuleListTable.add(new ReplaceRule("%xml_grade".concat(marksCount.toString()).concat("%"), d.nationalMark));
+                RuleListTable.add(new ReplaceRule("%l".concat(marksCount.toString()).concat("%"), d.ectsMark));
+            }
+            for (int i = marksCount; i <= 30; i++) {
+                RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), " "));
+                RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), " "));
+                RuleListTable.add(new ReplaceRule("%m".concat(marksCount.toString()).concat("%"), " "));
+                RuleListTable.add(new ReplaceRule("%xml_grade".concat(marksCount.toString()).concat("%"), " "));
+                RuleListTable.add(new ReplaceRule("%l".concat(marksCount.toString()).concat("%"), " "));
+            }
 
             XWPFDocument doc = new XWPFDocument(OPCPackage.open(templateFileName));
 
             replaceInParagraphs(RuleListTable, doc.getParagraphs());
 
-            // footer in pages
             for (XWPFFooter p : doc.getFooterList()) {
                 replaceInParagraphs(RuleListTable, p.getParagraphs());
             }
@@ -80,27 +99,6 @@ public class TemplateEngine {
         }
     }
 
-    private void printContentsOfTextBox(XWPFParagraph paragraph) {
-
-        XmlObject[] textBoxObjects = paragraph.getCTP().selectPath("declare namespace w ='http://schemas.openxmlformats.org/wordprocessingml/2006/main' declare namespace wps ='http://schemas.microsoft.com/office/word/2010/wordprocessingShape' .//*/wps:txbx/w:txbxContent");
-
-        for (int i = 0; i < textBoxObjects.length; i++) {
-            XWPFParagraph embeddedPara = null;
-            try {
-                XmlObject[] paraObjects = textBoxObjects[i].selectChildren(new QName("http://schemas.openxmlformats.org/wordprocessingml/2006/main", "p"));
-
-                for (int j = 0; j < paraObjects.length; j++) {
-                    embeddedPara = new XWPFParagraph(CTP.Factory.parse(paraObjects[j].xmlText()), paragraph.getBody());
-                    System.out.println(embeddedPara.getText());
-                    
-                }
-
-            } catch (XmlException e) {
-            }
-        }
-
-    }
-
     public long replaceInParagraphs(List<ReplaceRule> replacements, List<XWPFParagraph> xwpfParagraphs) {
         long count = 0;
         for (XWPFParagraph paragraph : xwpfParagraphs) {
@@ -112,6 +110,7 @@ public class TemplateEngine {
                 TextSegement found = paragraph.searchText(find, new PositionInParagraph());
                 if (found != null) {
                     count++;
+
                     if (found.getBeginRun() == found.getEndRun()) {
 
                         XWPFRun run = runs.get(found.getBeginRun());

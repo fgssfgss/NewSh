@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -63,15 +64,23 @@ public class XmlParser {
             student.sex = element.getElementsByTagName("sex").item(0).getTextContent();
 
             student.birthday = element.getElementsByTagName("birthday").item(0).getTextContent();
-            
+
             student.personDocument.id = element.getElementsByTagName("person_document").item(0).getAttributes().getNamedItem("ID").getTextContent();
             student.personDocument.number = element.getElementsByTagName("person_document").item(0).getAttributes().getNamedItem("number").getTextContent();
             student.personDocument.seria = element.getElementsByTagName("person_document").item(0).getAttributes().getNamedItem("seria").getTextContent();
-            
+
             student.diplom.number = element.getElementsByTagName("diplom").item(0).getAttributes().getNamedItem("number").getTextContent();
             student.diplom.seria = element.getElementsByTagName("diplom").item(0).getAttributes().getNamedItem("seria").getTextContent();
-            
-            student.honor = element.getElementsByTagName("honor").item(0).getTextContent();
+
+            String h = element.getElementsByTagName("honor").item(0).getTextContent();
+
+            if (h.equals("1")) {
+                student.honor = "Диплом з відзнакою";
+                student.honorEn = "Diploma with honours";
+            } else {
+                student.honor = "Диплом";
+                student.honorEn = "Diploma";
+            }
 
             student.prevDocument.id = element.getElementsByTagName("prev_document").item(0).getAttributes().getNamedItem("ID").getTextContent();
             student.prevDocument.number = element.getElementsByTagName("prev_document").item(0).getAttributes().getNamedItem("number").getTextContent();
@@ -87,18 +96,18 @@ public class XmlParser {
 
             student.payment = element.getElementsByTagName("payment").item(0).getTextContent();
 
-            NodeList marks = ((Element)element.getElementsByTagName("marks").item(0)).getElementsByTagName("discipline");
+            NodeList marks = ((Element) element.getElementsByTagName("marks").item(0)).getElementsByTagName("discipline");
 
             for (int mindex = 0; mindex < marks.getLength(); mindex++) {
-                Element mark = (Element)(marks.item(mindex));
+                Element mark = (Element) (marks.item(mindex));
                 Discipline di = new Discipline();
-                
+
                 di.name = mark.getAttribute("name");
                 di.mark = mark.getAttribute("mark");
                 di.nationalMark = mark.getAttribute("national_mark");
                 di.ectsMark = mark.getAttribute("ects_mark");
                 di.programUnit = mark.getAttribute("program_unit");
-                
+
                 student.marks.add(di);
             }
 

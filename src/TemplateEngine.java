@@ -23,13 +23,15 @@ public class TemplateEngine {
     Order order;
     List<Student> students;
 
-    String templateFileName = "E:\\unn\\sh7.docx";
-    String destination = "E:\\unn\\result\\";
-    String xmlFileName = "E:\\unn\\file.xml";
-    String docFileName = "E:\\unn\\doc.docx";
+    String templateFileName = "D:\\Programming\\NewSh\\doc\\sh7.docx";
+    String destination = "D:\\Programming\\NewSh\\doc\\result\\";
+    String xmlFileName = "D:\\Programming\\NewSh\\doc\\file.xml";
+    String docFileName = "D:\\Programming\\NewSh\\doc\\file.docx";
 
     public void parseFiles() {
         XmlParser xParser = new XmlParser(xmlFileName);
+        DocParser docParser = new DocParser(docFileName);
+        docParser.parse();
 
         order = xParser.getOrder();
         students = xParser.getStudents();

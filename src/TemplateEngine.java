@@ -22,11 +22,14 @@ public class TemplateEngine {
 
     Order order;
     List<Student> students;
+   // final String PATH = "D:\\Programming\\NewSh\\doc\\";
+   final String PATH = "E:\\eeee\\doc\\";
 
-    String templateFileName = "D:\\Programming\\NewSh\\doc\\sh7.docx";
-    String destination = "D:\\Programming\\NewSh\\doc\\result\\";
-    String xmlFileName = "D:\\Programming\\NewSh\\doc\\file.xml";
-    String docFileName = "D:\\Programming\\NewSh\\doc\\file.docx";
+
+    String templateFileName = PATH+"sh7.docx";
+    String destination = PATH+"result\\";
+    String xmlFileName = PATH+"file.xml";
+    String docFileName = PATH+"file.docx";
 
     public void parseFiles() {
         XmlParser xParser = new XmlParser(xmlFileName);

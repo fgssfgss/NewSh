@@ -27,7 +27,7 @@ public class TemplateEngine {
     //final String PATH = "D:\\Programming\\NewSh\\doc\\";
     final String PATH = "E:\\unn\\";
 
-    String templateFileName = PATH + "sh8.docx";
+    String templateFileName = PATH + "sh9.docx";
     String destination = PATH + "result\\";
     String xmlFileName = PATH + "file.xml";
     String docFileName = PATH + "file.docx";
@@ -47,6 +47,13 @@ public class TemplateEngine {
 
             List<ReplaceRule> RuleListTable = new ArrayList<>();
 
+            RuleListTable.add(new ReplaceRule("%xml_form%", order.timeEducation));
+            
+            if(order.timeEducation.equals("Денна"))
+            {
+                RuleListTable.add(new ReplaceRule("%xml_form_eng%", "Full time"));
+            }
+            
             RuleListTable.add(new ReplaceRule("%xml_lname_eng%", stud.lastName.en));
             RuleListTable.add(new ReplaceRule("%xml_lname%", stud.lastName.ua));
             RuleListTable.add(new ReplaceRule("%xml_fmname_eng%", stud.firstName.en));
@@ -77,6 +84,7 @@ public class TemplateEngine {
 
             Integer marksCount = 0;
             boolean summarySetted = false;
+            double det = 0.;
             for (DocParser.MarkParsed mr : dp.mp) {
                 marksCount++;
                 for (Discipline d : stud.marks) {
@@ -87,7 +95,7 @@ public class TemplateEngine {
                         RuleListTable.add(new ReplaceRule("%m".concat(marksCount.toString()).concat("%"), d.mark));
                         String de = Float.toString(mr.credits).concat(" (").concat(Integer.toString(mr.hours)).concat(")");
                         RuleListTable.add(new ReplaceRule("%de".concat(marksCount.toString()).concat("%"), de));
-                        
+                        det += mr.credits;
                         String nMark = "";
                         switch (d.nationalMark) {
                             case "Добре":
@@ -137,8 +145,10 @@ public class TemplateEngine {
                     }
                 }
             }
-
-            for (Integer i = marksCount; i <= 30; i++) {
+            
+            RuleListTable.add(new ReplaceRule("%det%", Double.toString(det)));
+            
+            for (Integer i = marksCount; i <= 80; i++) {
                 RuleListTable.add(new ReplaceRule("%num".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%doc_course".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%doc_year".concat(i.toString()).concat("%"), " "));

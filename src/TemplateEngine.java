@@ -22,20 +22,20 @@ public class TemplateEngine {
 
     Order order;
     List<Student> students;
-    final String PATH = "D:\\Programming\\NewSh\\doc\\";
-   //final String PATH = "E:\\eeee\\doc\\";
+    DocParser.DocParsed dp;
 
+    //final String PATH = "D:\\Programming\\NewSh\\doc\\";
+    final String PATH = "E:\\unn\\";
 
-    String templateFileName = PATH+"sh7.docx";
-    String destination = PATH+"result\\";
-    String xmlFileName = PATH+"file.xml";
-    String docFileName = PATH+"file.docx";
+    String templateFileName = PATH + "sh8.docx";
+    String destination = PATH + "result\\";
+    String xmlFileName = PATH + "file.xml";
+    String docFileName = PATH + "file.docx";
 
     public void parseFiles() {
         XmlParser xParser = new XmlParser(xmlFileName);
         DocParser docParser = new DocParser(docFileName);
-        DocParser.DocParsed dp = docParser.parse();
-
+        dp = docParser.parse();
         order = xParser.getOrder();
         students = xParser.getStudents();
     }
@@ -51,28 +51,98 @@ public class TemplateEngine {
             RuleListTable.add(new ReplaceRule("%xml_lname%", stud.lastName.ua));
             RuleListTable.add(new ReplaceRule("%xml_fmname_eng%", stud.firstName.en));
             RuleListTable.add(new ReplaceRule("%xml_fmname%", stud.firstName.ua));
-            
+
             RuleListTable.add(new ReplaceRule("%xml_honor_eng%", stud.honorEn));
             RuleListTable.add(new ReplaceRule("%xml_honor%", stud.honor));
-            
+
             RuleListTable.add(new ReplaceRule("%xml_birthday%", stud.birthday));
             RuleListTable.add(new ReplaceRule("%xml_S%", stud.diplom.seria));
             RuleListTable.add(new ReplaceRule("%xml_N%", stud.diplom.number));
 
+            RuleListTable.add(new ReplaceRule("%doc_text21%", dp.tp.p21));
+            RuleListTable.add(new ReplaceRule("%doc_text21_eng%", dp.tp.p21_eng));
+            RuleListTable.add(new ReplaceRule("%doc_text22%", dp.tp.p22));
+            RuleListTable.add(new ReplaceRule("%doc_text22_eng%", dp.tp.p22_eng));
+            RuleListTable.add(new ReplaceRule("%doc_text31%", dp.tp.p31));
+            RuleListTable.add(new ReplaceRule("%doc_text31_eng%", dp.tp.p31_eng));
+            RuleListTable.add(new ReplaceRule("%doc_text32%", dp.tp.p32));
+            RuleListTable.add(new ReplaceRule("%doc_text32_eng%", dp.tp.p32_eng));
+
+            RuleListTable.add(new ReplaceRule("%doc_text42_1%", dp.tp.p42_1));
+            RuleListTable.add(new ReplaceRule("%doc_text42_1_eng%", dp.tp.p42_1_eng));
+            RuleListTable.add(new ReplaceRule("%doc_text42_2%", dp.tp.p42_2));
+            RuleListTable.add(new ReplaceRule("%doc_text42_2_eng%", dp.tp.p42_2_eng));
+            RuleListTable.add(new ReplaceRule("%doc_text42_3%", dp.tp.p42_3));
+            RuleListTable.add(new ReplaceRule("%doc_text42_3_eng%", dp.tp.p42_3_eng));
+
             Integer marksCount = 0;
-            for (Discipline d : stud.marks) {
+            boolean summarySetted = false;
+            for (DocParser.MarkParsed mr : dp.mp) {
                 marksCount++;
-                RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), marksCount.toString()));
-                RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), d.name));
-                RuleListTable.add(new ReplaceRule("%m".concat(marksCount.toString()).concat("%"), d.mark));
-                RuleListTable.add(new ReplaceRule("%xml_grade".concat(marksCount.toString()).concat("%"), d.nationalMark));
-                RuleListTable.add(new ReplaceRule("%l".concat(marksCount.toString()).concat("%"), d.ectsMark));
+                for (Discipline d : stud.marks) {
+                    if (d.name.equals(mr.subject)) {
+                        RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), marksCount.toString()));
+                        RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), mr.subject.concat("/").concat(mr.subject_eng)));
+                        RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), Integer.toString(mr.year)));
+                        RuleListTable.add(new ReplaceRule("%m".concat(marksCount.toString()).concat("%"), d.mark));
+                        String de = Float.toString(mr.credits).concat(" (").concat(Integer.toString(mr.hours)).concat(")");
+                        RuleListTable.add(new ReplaceRule("%de".concat(marksCount.toString()).concat("%"), de));
+                        
+                        String nMark = "";
+                        switch (d.nationalMark) {
+                            case "Добре":
+                                nMark = "Добре / Good";
+                                break;
+                            case "Відмінно":
+                                nMark = "Відмінно / Excellent";
+                                break;
+                            case "Задовільно":
+                                nMark = "Задовільно / Satisfactory";
+                                break;
+                            case "Незадовільно":
+                                nMark = "Незадовільно / Fail";
+                                break;
+                            case "Зараховано":
+                                nMark = "Зараховано / Passed";
+                                break;
+                            case "Не зараховано":
+                                nMark = "Не зараховано / Fail";
+                                break;
+                        }
+                        
+                        RuleListTable.add(new ReplaceRule("%xml_grade".concat(marksCount.toString()).concat("%"), nMark));
+                        RuleListTable.add(new ReplaceRule("%l".concat(marksCount.toString()).concat("%"), d.ectsMark));
+                        break;
+                    } else if(d.programUnit.equals("50") && !summarySetted){
+                        String Mark = "";
+                        switch (d.nationalMark) {
+                            case "Добре":
+                                Mark = "Добре / Good";
+                                break;
+                            case "Відмінно":
+                                Mark = "Відмінно / Excellent";
+                                break;
+                            case "Задовільно":
+                                Mark = "Задовільно / Satisfactory";
+                                break;
+                            case "Незадовільно":
+                                Mark = "Незадовільно / Fail";
+                                break;
+                        }
+                        
+                        RuleListTable.add(new ReplaceRule("%mt%", d.mark));
+                        RuleListTable.add(new ReplaceRule("%lt%", d.ectsMark));
+                        RuleListTable.add(new ReplaceRule("%xml_gradet%", Mark));
+                        summarySetted = true;
+                    }
+                }
             }
-            // don't work, maybe I'm too dumb for this shit?
-            // or works ;)
+
             for (Integer i = marksCount; i <= 30; i++) {
                 RuleListTable.add(new ReplaceRule("%num".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%doc_course".concat(i.toString()).concat("%"), " "));
+                RuleListTable.add(new ReplaceRule("%doc_year".concat(i.toString()).concat("%"), " "));
+                RuleListTable.add(new ReplaceRule("%de".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%m".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%xml_grade".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%l".concat(i.toString()).concat("%"), " "));

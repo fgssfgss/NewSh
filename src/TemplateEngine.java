@@ -22,8 +22,8 @@ public class TemplateEngine {
 
     Order order;
     List<Student> students;
-   // final String PATH = "D:\\Programming\\NewSh\\doc\\";
-   final String PATH = "E:\\eeee\\doc\\";
+    final String PATH = "D:\\Programming\\NewSh\\doc\\";
+   //final String PATH = "E:\\eeee\\doc\\";
 
 
     String templateFileName = PATH+"sh7.docx";
@@ -34,7 +34,7 @@ public class TemplateEngine {
     public void parseFiles() {
         XmlParser xParser = new XmlParser(xmlFileName);
         DocParser docParser = new DocParser(docFileName);
-        docParser.parse();
+        DocParser.DocParsed dp = docParser.parse();
 
         order = xParser.getOrder();
         students = xParser.getStudents();

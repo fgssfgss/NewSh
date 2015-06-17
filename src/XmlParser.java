@@ -16,17 +16,24 @@ import org.xml.sax.SAXException;
  */
 public class XmlParser {
 
+    private int format;
     private Element root;
     private NodeList studentList;
 
-    public XmlParser(String filename) {
+    public XmlParser(String filename, int format) {
         try {
             File file = new File(filename);
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
             Document document = builder.parse(file);
-            root = document.getDocumentElement();
-            studentList = root.getElementsByTagName("student");
+            this.format = format;
+            if (format == 0) {
+                root = document.getDocumentElement();
+                studentList = root.getElementsByTagName("student");
+            } else if (format == 1) {
+                root = (Element) ((Element) document.getDocumentElement().getElementsByTagName("request").item(0));
+                studentList = root.getElementsByTagName("student");
+            }
 
         } catch (ParserConfigurationException | SAXException | IOException ex) {
         }
@@ -35,13 +42,21 @@ public class XmlParser {
     public Order getOrder() {
         Order ord = new Order();
 
-        Element elem = (Element) ((Element) root.getElementsByTagName("order").item(0));
+        if (format == 0) {
+            Element elem = (Element) ((Element) root.getElementsByTagName("order").item(0));
 
-        ord.timeEducation = elem.getElementsByTagName("time_education").item(0).getTextContent();
-        ord.issued = elem.getElementsByTagName("issued").item(0).getTextContent();
-        ord.graduated = elem.getElementsByTagName("graduated").item(0).getTextContent();
-        ord.faculty = elem.getElementsByTagName("faculty").item(0).getAttributes().getNamedItem("uk").getTextContent();
-        ord.qualification = elem.getElementsByTagName("qualification").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            ord.timeEducation = elem.getElementsByTagName("time_education").item(0).getTextContent();
+            ord.issued = elem.getElementsByTagName("issued").item(0).getTextContent();
+            ord.graduated = elem.getElementsByTagName("graduated").item(0).getTextContent();
+            ord.faculty = elem.getElementsByTagName("faculty").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            ord.qualification = elem.getElementsByTagName("qualification").item(0).getAttributes().getNamedItem("uk").getTextContent();
+        } else if (format == 1) {
+            ord.timeEducation = root.getElementsByTagName("time_education").item(0).getTextContent();
+            ord.issued = root.getElementsByTagName("issued").item(0).getTextContent();
+            ord.graduated = root.getElementsByTagName("graduated").item(0).getTextContent();
+            ord.faculty = root.getElementsByTagName("faculty").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            ord.qualification = root.getElementsByTagName("qualification").item(0).getAttributes().getNamedItem("uk").getTextContent();
+        }
 
         return ord;
     }
@@ -86,12 +101,14 @@ public class XmlParser {
             student.prevDocument.number = element.getElementsByTagName("prev_document").item(0).getAttributes().getNamedItem("number").getTextContent();
             student.prevDocument.seria = element.getElementsByTagName("prev_document").item(0).getAttributes().getNamedItem("seria").getTextContent();
 
-            //student.prevQualification.en = element.getElementsByTagName("prev_qualification").item(0).getAttributes().getNamedItem("en").getTextContent();
-            //student.prevQualification.ua = element.getElementsByTagName("prev_qualification").item(0).getAttributes().getNamedItem("uk").getTextContent();
-
-            //student.prevSpeciality.en = element.getElementsByTagName("prev_speciality").item(0).getAttributes().getNamedItem("en").getTextContent();
-            //student.prevSpeciality.ua = element.getElementsByTagName("prev_speciality").item(0).getAttributes().getNamedItem("uk").getTextContent();
-
+            if (format == 0) {
+                student.prevQualification.en = element.getElementsByTagName("prev_qualification").item(0).getAttributes().getNamedItem("en").getTextContent();
+                student.prevQualification.ua = element.getElementsByTagName("prev_qualification").item(0).getAttributes().getNamedItem("uk").getTextContent();
+                student.prevSpeciality.en = element.getElementsByTagName("prev_speciality").item(0).getAttributes().getNamedItem("en").getTextContent();
+                student.prevSpeciality.ua = element.getElementsByTagName("prev_speciality").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            } else if (format == 1) {
+                // empty strings
+            }
             student.receiptDay = element.getElementsByTagName("receipt_date").item(0).getTextContent();
 
             student.payment = element.getElementsByTagName("payment").item(0).getTextContent();

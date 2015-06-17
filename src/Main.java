@@ -1,3 +1,4 @@
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -27,8 +28,20 @@ public class Main {
         }
     }
 
-    public void run() throws FileNotFoundException, IOException, InvalidFormatException {  
+    public void run() throws FileNotFoundException, IOException, InvalidFormatException {
+        //final String PATH = "D:\\Programming\\NewSh\\doc\\";
+        final String PATH = "E:\\unn\\";
+
+        String templateFileName = PATH + "sh9.docx";
+        String destination = PATH + "result\\";
+        String xmlFileName = PATH + "f1.xml";
+        String docFileName = PATH + "file2.docx";
+
         TemplateEngine tempEngine = new TemplateEngine();
+        tempEngine.setDestination(destination);
+        tempEngine.setDocFileName(docFileName);
+        tempEngine.setTemplateFileName(templateFileName);
+        tempEngine.setXmlFileName(xmlFileName);
         tempEngine.parseFiles();
         tempEngine.process();
     }

@@ -20,20 +20,60 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  */
 public class TemplateEngine {
 
-    Order order;
-    List<Student> students;
-    DocParser.DocParsed dp;
+    private Order order;
+    private List<Student> students;
+    private DocParser.DocParsed dp;
 
-    //final String PATH = "D:\\Programming\\NewSh\\doc\\";
-    final String PATH = "E:\\unn\\";
+    private String templateFileName = "";
+    private String destination = "";
+    private String xmlFileName = "";
+    private String docFileName = "";
 
-    String templateFileName = PATH + "sh9.docx";
-    String destination = PATH + "result\\";
-    String xmlFileName = PATH + "file2.xml";
-    String docFileName = PATH + "file3.docx";
+    public void setTemplateFileName(String templateFileName) {
+        this.templateFileName = templateFileName;
+    }
+
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+
+    public void setXmlFileName(String xmlFileName) {
+        this.xmlFileName = xmlFileName;
+    }
+
+    public void setDocFileName(String docFileName) {
+        this.docFileName = docFileName;
+    }
+
+    public String EngMark(String nm) {
+        String nMark = "";
+        
+        switch (nm) {
+            case "Добре":
+                nMark = "Добре / Good";
+                break;
+            case "Відмінно":
+                nMark = "Відмінно / Excellent";
+                break;
+            case "Задовільно":
+                nMark = "Задовільно / Satisfactory";
+                break;
+            case "Незадовільно":
+                nMark = "Незадовільно / Fail";
+                break;
+            case "Зараховано":
+                nMark = "Зараховано / Passed";
+                break;
+            case "Не зараховано":
+                nMark = "Не зараховано / Fail";
+                break;
+        }
+        
+        return nMark;
+    }
 
     public void parseFiles() {
-        XmlParser xParser = new XmlParser(xmlFileName);
+        XmlParser xParser = new XmlParser(xmlFileName, 1);
         DocParser docParser = new DocParser(docFileName);
         //docParser.removePassword(); // not work, need to hack
         dp = docParser.parse();
@@ -109,52 +149,15 @@ public class TemplateEngine {
                         String de = Float.toString(mr.credits).concat(" (").concat(Integer.toString(mr.hours)).concat(")");
                         RuleListTable.add(new ReplaceRule("%de".concat(marksCount.toString()).concat("%"), de));
                         det += mr.credits;
-                        String nMark = "";
-                        switch (d.nationalMark) {
-                            case "Добре":
-                                nMark = "Добре / Good";
-                                break;
-                            case "Відмінно":
-                                nMark = "Відмінно / Excellent";
-                                break;
-                            case "Задовільно":
-                                nMark = "Задовільно / Satisfactory";
-                                break;
-                            case "Незадовільно":
-                                nMark = "Незадовільно / Fail";
-                                break;
-                            case "Зараховано":
-                                nMark = "Зараховано / Passed";
-                                break;
-                            case "Не зараховано":
-                                nMark = "Не зараховано / Fail";
-                                break;
-                        }
 
-                        RuleListTable.add(new ReplaceRule("%xml_grade".concat(marksCount.toString()).concat("%"), nMark));
+                        RuleListTable.add(new ReplaceRule("%xml_grade".concat(marksCount.toString()).concat("%"), EngMark(d.nationalMark)));
                         RuleListTable.add(new ReplaceRule("%l".concat(marksCount.toString()).concat("%"), d.ectsMark));
                         lastProgUnit = d.programUnit;
                         break;
                     } else if (d.programUnit.equals("50") && !summarySetted) {
-                        String Mark = "";
-                        switch (d.nationalMark) {
-                            case "Добре":
-                                Mark = "Добре / Good";
-                                break;
-                            case "Відмінно":
-                                Mark = "Відмінно / Excellent";
-                                break;
-                            case "Задовільно":
-                                Mark = "Задовільно / Satisfactory";
-                                break;
-                            case "Незадовільно":
-                                Mark = "Незадовільно / Fail";
-                                break;
-                        }
-
                         RuleListTable.add(new ReplaceRule("%mt%", d.mark));
                         RuleListTable.add(new ReplaceRule("%lt%", d.ectsMark));
-                        RuleListTable.add(new ReplaceRule("%xml_gradet%", Mark));
+                        RuleListTable.add(new ReplaceRule("%xml_gradet%", EngMark(d.nationalMark)));
                         summarySetted = true;
                     }
                 }

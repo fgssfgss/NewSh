@@ -77,7 +77,10 @@ public class DocParser {
                     while ((len = (is.read(buf))) > 0) {
                         String s = new String(buf);
                         if (s.contains("w:documentProtection")) {
-                            buf = s.replaceAll("\\<w\\:documentProtection(.*?)\\/\\>", " ").getBytes();
+                            System.out.println(s);
+                            String oh = s.replaceAll("\\<w\\:documentProtection(.*?)==\"\\/\\>", " ");
+                            buf = oh.getBytes();
+                            System.out.println(oh);
                         }
                         zos.write(buf, 0, (len < buf.length) ? len : buf.length);
                     }

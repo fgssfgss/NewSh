@@ -29,12 +29,13 @@ public class TemplateEngine {
 
     String templateFileName = PATH + "sh9.docx";
     String destination = PATH + "result\\";
-    String xmlFileName = PATH + "file.xml";
-    String docFileName = PATH + "file.docx";
+    String xmlFileName = PATH + "file2.xml";
+    String docFileName = PATH + "file3.docx";
 
     public void parseFiles() {
         XmlParser xParser = new XmlParser(xmlFileName);
         DocParser docParser = new DocParser(docFileName);
+        //docParser.removePassword(); // not work, need to hack
         dp = docParser.parse();
         order = xParser.getOrder();
         students = xParser.getStudents();

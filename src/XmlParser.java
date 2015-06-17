@@ -86,11 +86,11 @@ public class XmlParser {
             student.prevDocument.number = element.getElementsByTagName("prev_document").item(0).getAttributes().getNamedItem("number").getTextContent();
             student.prevDocument.seria = element.getElementsByTagName("prev_document").item(0).getAttributes().getNamedItem("seria").getTextContent();
 
-            student.prevQualification.en = element.getElementsByTagName("prev_qualification").item(0).getAttributes().getNamedItem("en").getTextContent();
-            student.prevQualification.ua = element.getElementsByTagName("prev_qualification").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            //student.prevQualification.en = element.getElementsByTagName("prev_qualification").item(0).getAttributes().getNamedItem("en").getTextContent();
+            //student.prevQualification.ua = element.getElementsByTagName("prev_qualification").item(0).getAttributes().getNamedItem("uk").getTextContent();
 
-            student.prevSpeciality.en = element.getElementsByTagName("prev_speciality").item(0).getAttributes().getNamedItem("en").getTextContent();
-            student.prevSpeciality.ua = element.getElementsByTagName("prev_speciality").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            //student.prevSpeciality.en = element.getElementsByTagName("prev_speciality").item(0).getAttributes().getNamedItem("en").getTextContent();
+            //student.prevSpeciality.ua = element.getElementsByTagName("prev_speciality").item(0).getAttributes().getNamedItem("uk").getTextContent();
 
             student.receiptDay = element.getElementsByTagName("receipt_date").item(0).getTextContent();
 

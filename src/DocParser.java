@@ -1,24 +1,32 @@
+
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.Locale;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipOutputStream;
 
 /**
  * @author b2soft
  */
-
 public class DocParser {
 
     String parsedData;
@@ -26,6 +34,7 @@ public class DocParser {
     XWPFDocument doc;
     private int end;
     private String parsedData1;
+
     public DocParser(String fileName) {
         this.fileName = fileName;
         try {
@@ -37,7 +46,61 @@ public class DocParser {
         }
     }
 
+    public void removePassword() {
+        ZipOutputStream zos = null;
+        try {
+            ZipFile zipFile = null;
+            try {
+                zipFile = new ZipFile(fileName);
+            } catch (IOException ex) {
+                Logger.getLogger(DocParser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            zos = new ZipOutputStream(new FileOutputStream("E:\\unn\\out.docx"));
+            fileName = "E:\\unn\\out.docx";
+            for (Enumeration e = zipFile.entries(); e.hasMoreElements();) {
+                ZipEntry entryIn = (ZipEntry) e.nextElement();
+                
+                if (!entryIn.getName().equalsIgnoreCase("word/settings.xml")) {
+                    zos.putNextEntry(new ZipEntry(entryIn.getName()));
+                    InputStream is = zipFile.getInputStream(entryIn);
+                    byte[] buf = new byte[1024];
+                    int len;
+                    while ((len = (is.read(buf))) > 0) {
+                        zos.write(buf, 0, len);
+                    }
+                } else {
+                    zos.putNextEntry(new ZipEntry(entryIn.getName()));
+
+                    InputStream is = zipFile.getInputStream(entryIn);
+                    byte[] buf = new byte[1024];
+                    int len;
+                    while ((len = (is.read(buf))) > 0) {
+                        String s = new String(buf);
+                        if (s.contains("w:documentProtection")) {
+                            buf = s.replaceAll("\\<w\\:documentProtection(.*?)\\/\\>", " ").getBytes();
+                        }
+                        zos.write(buf, 0, (len < buf.length) ? len : buf.length);
+                    }
+                }
+                
+                zos.closeEntry();
+        }
+            zos.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(DocParser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(DocParser.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                zos.close();
+            } catch (IOException ex) {
+                Logger.getLogger(DocParser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
     class DocParsed {
+
         TextParsed tp;
         List<MarkParsed> mp;
 
@@ -80,8 +143,10 @@ public class DocParser {
         TextParsed dp = new TextParsed();
         dp.p21 = parseRegEx("\\[2\\.1\\](.*?)3");
         writer.println(dp.p21);
+        System.out.println(dp.p21);
         dp.p21_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[2\\.1\\](.*?)4");
         writer.println(dp.p21_eng);
+        System.out.println(dp.p21_eng);
 
         dp.p22 = parseRegEx("\\[2\\.2\\](.*?)7");
         writer.println(dp.p22);
@@ -154,13 +219,12 @@ public class DocParser {
             int hours = Integer.valueOf(sparse[4]);
             int markType = Integer.valueOf(sparse[5].substring(0, 1));
 
-            parsedList.add(new MarkParsed((sparse[5].length()==2)?currType++:currType, year,subject, subject_eng, credits, hours, markType));
-            System.out.println(parsedList.get(parsedList.size()-1));
+            parsedList.add(new MarkParsed((sparse[5].length() == 2) ? currType++ : currType, year, subject, subject_eng, credits, hours, markType));
+            System.out.println(parsedList.get(parsedList.size() - 1));
 
         }
         return parsedList;
     }
-
 
     private String parseRegEx(String regex) {
         Pattern pattern = Pattern.compile(regex);
@@ -173,6 +237,7 @@ public class DocParser {
     }
 
     public static class MarkParsed {
+
         int type; // 1 - ?????????? ???????? 2 - ???????? 3 - ??????? ?????? (???????) 4 - ?????????? ???????? ?????????
         int year;
         String subject;
@@ -193,19 +258,20 @@ public class DocParser {
 
         @Override
         public String toString() {
-            return "MarkParsed{" +
-                    "type=" + type +
-                    ", year=" + year +
-                    ", subject='" + subject + '\'' +
-                    ", subject_eng='" + subject_eng + '\'' +
-                    ", credits=" + credits +
-                    ", hours=" + hours +
-                    ", mark_type=" + mark_type +
-                    '}';
+            return "MarkParsed{"
+                    + "type=" + type
+                    + ", year=" + year
+                    + ", subject='" + subject + '\''
+                    + ", subject_eng='" + subject_eng + '\''
+                    + ", credits=" + credits
+                    + ", hours=" + hours
+                    + ", mark_type=" + mark_type
+                    + '}';
         }
     }
 
     public static class TextParsed {
+
         String p21;
         String p21_eng;
         String p22;

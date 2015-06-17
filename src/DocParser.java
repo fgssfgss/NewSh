@@ -59,7 +59,7 @@ public class DocParser {
             fileName = "E:\\unn\\out.docx";
             for (Enumeration e = zipFile.entries(); e.hasMoreElements();) {
                 ZipEntry entryIn = (ZipEntry) e.nextElement();
-                
+
                 if (!entryIn.getName().equalsIgnoreCase("word/settings.xml")) {
                     zos.putNextEntry(new ZipEntry(entryIn.getName()));
                     InputStream is = zipFile.getInputStream(entryIn);
@@ -85,9 +85,9 @@ public class DocParser {
                         zos.write(buf, 0, (len < buf.length) ? len : buf.length);
                     }
                 }
-                
+
                 zos.closeEntry();
-        }
+            }
             zos.close();
         } catch (FileNotFoundException ex) {
             Logger.getLogger(DocParser.class.getName()).log(Level.SEVERE, null, ex);

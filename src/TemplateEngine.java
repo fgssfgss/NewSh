@@ -47,7 +47,7 @@ public class TemplateEngine {
 
     public String EngMark(String nm) {
         String nMark = "";
-        
+
         switch (nm) {
             case "Добре":
                 nMark = "Добре / Good";
@@ -68,7 +68,7 @@ public class TemplateEngine {
                 nMark = "Не зараховано / Fail";
                 break;
         }
-        
+
         return nMark;
     }
 
@@ -114,6 +114,8 @@ public class TemplateEngine {
             RuleListTable.add(new ReplaceRule("%doc_text31_eng%", dp.tp.p31_eng));
             RuleListTable.add(new ReplaceRule("%doc_text32%", dp.tp.p32));
             RuleListTable.add(new ReplaceRule("%doc_text32_eng%", dp.tp.p32_eng));
+            RuleListTable.add(new ReplaceRule("%doc_text33%", dp.tp.p33));
+            RuleListTable.add(new ReplaceRule("%doc_text33_eng%", dp.tp.p33_eng));
 
             RuleListTable.add(new ReplaceRule("%doc_text42_1%", dp.tp.p42_1));
             RuleListTable.add(new ReplaceRule("%doc_text42_1_eng%", dp.tp.p42_1_eng));

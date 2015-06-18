@@ -146,10 +146,9 @@ public class DocParser {
         TextParsed dp = new TextParsed();
         dp.p21 = parseRegEx("\\[2\\.1\\](.*?)3");
         writer.println(dp.p21);
-        System.out.println(dp.p21);
+
         dp.p21_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[2\\.1\\](.*?)4");
         writer.println(dp.p21_eng);
-        System.out.println(dp.p21_eng);
 
         dp.p22 = parseRegEx("\\[2\\.2\\](.*?)7");
         writer.println(dp.p22);
@@ -185,6 +184,19 @@ public class DocParser {
         writer.println(dp.p42_3);
         dp.p42_3_eng = parseRegEx("\u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f\\:\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)20");
         writer.println(dp.p42_3_eng);
+
+        System.out.println(parsedData);
+
+        dp.p51 = parseRegEx("\\[5\\.1\\](.*?)25");
+        writer.println(dp.p51);
+        dp.p51_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[5\\.1\\](.*?)26");
+        writer.println(dp.p51_eng);
+
+        dp.p52 = parseRegEx("\\[5\\.2\\](.*?)27");
+        writer.println(dp.p52);
+        dp.p52_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[5\\.2\\](.*?)28");
+        writer.println(dp.p52_eng);
+
         writer.close();
         return dp;
 
@@ -193,7 +205,7 @@ public class DocParser {
     private List<MarkParsed> parseMarks() throws ParseException {
         List<MarkParsed> parsedList = new ArrayList<>();
 
-        String tableData = parsedData;
+        String tableData = new String(parsedData);
         Pattern pattern = Pattern.compile("\\*\\s\u00ab\u041d\u043e\u043c\u0435\u0440\\s\u0437\u0430\\s\u043f\u043e\u0440\u044f\u0434\u043a\u043e\u043c");
         Matcher matcher = pattern.matcher(tableData);
         if (matcher.find()) {
@@ -291,5 +303,9 @@ public class DocParser {
         String p42_2_eng;
         String p42_3;
         String p42_3_eng;
+        String p51;
+        String p51_eng;
+        String p52;
+        String p52_eng;
     }
 }

@@ -1,4 +1,3 @@
-
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
@@ -146,9 +145,10 @@ public class DocParser {
         TextParsed dp = new TextParsed();
         dp.p21 = parseRegEx("\\[2\\.1\\](.*?)3");
         writer.println(dp.p21);
-
+        System.out.println(dp.p21);
         dp.p21_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[2\\.1\\](.*?)4");
         writer.println(dp.p21_eng);
+        System.out.println(dp.p21_eng);
 
         dp.p22 = parseRegEx("\\[2\\.2\\](.*?)7");
         writer.println(dp.p22);
@@ -185,7 +185,7 @@ public class DocParser {
         dp.p42_3_eng = parseRegEx("\u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f\\:\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)20");
         writer.println(dp.p42_3_eng);
 
-        System.out.println(parsedData);
+        int end = this.end;
 
         dp.p51 = parseRegEx("\\[5\\.1\\](.*?)25");
         writer.println(dp.p51);
@@ -196,6 +196,9 @@ public class DocParser {
         writer.println(dp.p52);
         dp.p52_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[5\\.2\\](.*?)28");
         writer.println(dp.p52_eng);
+        
+        this.end = end;
+
 
         writer.close();
         return dp;
@@ -286,7 +289,6 @@ public class DocParser {
     }
 
     public static class TextParsed {
-
         String p21;
         String p21_eng;
         String p22;

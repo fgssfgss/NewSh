@@ -123,6 +123,11 @@ public class TemplateEngine {
             RuleListTable.add(new ReplaceRule("%doc_text42_2_eng%", dp.tp.p42_2_eng));
             RuleListTable.add(new ReplaceRule("%doc_text42_3%", dp.tp.p42_3));
             RuleListTable.add(new ReplaceRule("%doc_text42_3_eng%", dp.tp.p42_3_eng));
+            
+            RuleListTable.add(new ReplaceRule("%doc_text51%", dp.tp.p51));
+            RuleListTable.add(new ReplaceRule("%doc_text51_eng%", dp.tp.p51_eng));
+            RuleListTable.add(new ReplaceRule("%doc_text52%", dp.tp.p52));
+            RuleListTable.add(new ReplaceRule("%doc_text52_eng%", dp.tp.p52_eng));
 
             Integer marksCount = 0;
             Integer tablePos = 0;

@@ -125,6 +125,8 @@ public class TemplateEngine {
             RuleListTable.add(new ReplaceRule("%doc_text42_3_eng%", dp.tp.p42_3_eng));
 
             Integer marksCount = 0;
+            Integer tablePos = 0;
+            Integer progUn = 0;
             boolean summarySetted = false;
             double det = 0.;
             String lastProgUnit = "";
@@ -134,7 +136,8 @@ public class TemplateEngine {
                 for (Discipline d : stud.marks) {
                     if (d.name.equals(mr.subject)) {
                         if (!lastProgUnit.equals(d.programUnit)) {
-                            RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), marksCount.toString()));
+                            progUn++;
+                            RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), Integer.toString(progUn)));
                             RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), " "));
                             RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), " "));
                             RuleListTable.add(new ReplaceRule("%de".concat(marksCount.toString()).concat("%"), " "));
@@ -143,8 +146,8 @@ public class TemplateEngine {
                             RuleListTable.add(new ReplaceRule("%l".concat(marksCount.toString()).concat("%"), " "));
                             marksCount++;
                         }
-
-                        RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), marksCount.toString()));
+                        tablePos++;
+                        RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), tablePos.toString()));
                         RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), mr.subject.concat("/").concat(mr.subject_eng)));
                         RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), Integer.toString(mr.year)));
                         RuleListTable.add(new ReplaceRule("%m".concat(marksCount.toString()).concat("%"), d.mark));

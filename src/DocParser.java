@@ -205,7 +205,7 @@ public class DocParser {
     private List<MarkParsed> parseMarks() throws ParseException {
         List<MarkParsed> parsedList = new ArrayList<>();
 
-        String tableData = new String(parsedData);
+        String tableData = parsedData;
         Pattern pattern = Pattern.compile("\\*\\s\u00ab\u041d\u043e\u043c\u0435\u0440\\s\u0437\u0430\\s\u043f\u043e\u0440\u044f\u0434\u043a\u043e\u043c");
         Matcher matcher = pattern.matcher(tableData);
         if (matcher.find()) {

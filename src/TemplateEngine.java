@@ -19,7 +19,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  * @author Andrew
  */
 public class TemplateEngine {
-
+    private boolean st = false;
     private Order order;
     private List<Student> students;
     private DocParser.DocParsed dp;
@@ -146,6 +146,21 @@ public class TemplateEngine {
             RuleListTable.add(new ReplaceRule("%doc_text52%", dp.tp.p52));
             RuleListTable.add(new ReplaceRule("%doc_text52_eng%", dp.tp.p52_eng));
 
+            String text61 = "";
+            String text61Eng = "";
+            if(st){
+                text61 = "2 роки";
+                text61Eng = "2 years";
+            } else {
+                text61 = "4 роки";
+                text61Eng = "4 years";
+            }
+            RuleListTable.add(new ReplaceRule("%doc_text61%", text61));
+            RuleListTable.add(new ReplaceRule("%doc_text61_eng%", text61Eng));
+            
+            RuleListTable.add(new ReplaceRule("%doc_text61%", dp.tp.p52));
+            RuleListTable.add(new ReplaceRule("%doc_text61_eng%", dp.tp.p52_eng));
+            
             String text64 = "Попереднiй документ про освiту / Pregoing document on education: ".concat(stud.prevDocument.seria).concat(" ").concat(stud.prevDocument.number);
             String text64Eng = "-освiтньо-квалiфiкацiйний рiвень / qualification level of education - ";
             switch (stud.prevDocument.id) {

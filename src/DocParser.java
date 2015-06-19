@@ -32,7 +32,6 @@ public class DocParser {
     String fileName;
     XWPFDocument doc;
     private int end;
-    private String parsedData1;
 
     public DocParser(String fileName) {
         this.fileName = fileName;
@@ -143,6 +142,7 @@ public class DocParser {
             e.printStackTrace();
         }
         TextParsed dp = new TextParsed();
+        writer.println(parsedData);
         dp.p21 = parseRegEx("\\[2\\.1\\](.*?)3");
         writer.println(dp.p21);
         System.out.println(dp.p21);

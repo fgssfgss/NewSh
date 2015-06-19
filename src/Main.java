@@ -29,8 +29,8 @@ public class Main {
     }
 
     public void run() throws FileNotFoundException, IOException, InvalidFormatException {
-        //final String PATH = "D:\\Programming\\NewSh\\doc\\";
-        final String PATH = "E:\\unn\\";
+        final String PATH = "doc\\";
+        //final String PATH = "E:\\unn\\";
 
         String templateFileName = PATH + "sh11.docx";
         String destination = PATH + "result\\";

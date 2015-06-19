@@ -26,7 +26,7 @@ public class Main {
         String templateFileName = PATH + "sh12.docx";
         String destination = PATH + "result\\";
         String xmlFileName = PATH + "f1.xml";
-        String docFileName = PATH + "file2.docx";
+        String docFileName = PATH + "file3.docx";
 
         TemplateEngine tempEngine = new TemplateEngine();
         tempEngine.setDestination(destination);

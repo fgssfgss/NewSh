@@ -1,3 +1,4 @@
+
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
@@ -22,6 +23,7 @@ import java.util.regex.Pattern;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
+import org.apache.poi.xwpf.usermodel.XWPFSettings;
 
 /**
  * @author b2soft
@@ -44,60 +46,13 @@ public class DocParser {
         }
     }
 
+    static String convertStreamToString(java.io.InputStream is) {
+        java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+        return s.hasNext() ? s.next() : "";
+    }
+
     public void removePassword() {
-        ZipOutputStream zos = null;
-        try {
-            ZipFile zipFile = null;
-            try {
-                zipFile = new ZipFile(fileName);
-            } catch (IOException ex) {
-                Logger.getLogger(DocParser.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            zos = new ZipOutputStream(new FileOutputStream("E:\\unn\\out.docx"));
-            fileName = "E:\\unn\\out.docx";
-            for (Enumeration e = zipFile.entries(); e.hasMoreElements();) {
-                ZipEntry entryIn = (ZipEntry) e.nextElement();
-
-                if (!entryIn.getName().equalsIgnoreCase("word/settings.xml")) {
-                    zos.putNextEntry(new ZipEntry(entryIn.getName()));
-                    InputStream is = zipFile.getInputStream(entryIn);
-                    byte[] buf = new byte[1024];
-                    int len;
-                    while ((len = (is.read(buf))) > 0) {
-                        zos.write(buf, 0, len);
-                    }
-                } else {
-                    zos.putNextEntry(new ZipEntry(entryIn.getName()));
-
-                    InputStream is = zipFile.getInputStream(entryIn);
-                    byte[] buf = new byte[1024];
-                    int len;
-                    while ((len = (is.read(buf))) > 0) {
-                        String s = new String(buf);
-                        if (s.contains("w:documentProtection")) {
-                            System.out.println(s);
-                            String oh = s.replaceAll("\\<w\\:documentProtection(.*?)==\"\\/\\>", " ");
-                            buf = oh.getBytes();
-                            System.out.println(oh);
-                        }
-                        zos.write(buf, 0, (len < buf.length) ? len : buf.length);
-                    }
-                }
-
-                zos.closeEntry();
-            }
-            zos.close();
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(DocParser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(DocParser.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                zos.close();
-            } catch (IOException ex) {
-                Logger.getLogger(DocParser.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        doc.removeProtectionEnforcement();
     }
 
     class DocParsed {
@@ -116,6 +71,8 @@ public class DocParser {
         XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
         parsedData = extractor.getText().replaceAll("(\\r|\\n)", "");
 
+        System.out.println(parsedData);
+        
         TextParsed tp = parseText();
 
         parsedData = parsedData.substring(end);
@@ -211,9 +168,8 @@ public class DocParser {
         writer.println(dp.p65_spec);
         dp.p65_spec_eng = parseRegEx("\u0446\u0456\u044f\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[6\\.1\\](.*?)32");
         writer.println(dp.p65_spec_eng);
-        
-        this.end = end;
 
+        this.end = end;
 
         writer.close();
         return dp;
@@ -304,6 +260,7 @@ public class DocParser {
     }
 
     public static class TextParsed {
+
         String p21;
         String p21_eng;
         String p22;

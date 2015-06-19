@@ -90,7 +90,7 @@ public class TemplateEngine {
     public void parseFiles() {
         XmlParser xParser = new XmlParser(xmlFileName, 1);
         DocParser docParser = new DocParser(docFileName);
-        //docParser.removePassword(); // not work, need to hack
+        docParser.removePassword(); 
         dp = docParser.parse();
         order = xParser.getOrder();
         students = xParser.getStudents();

@@ -138,11 +138,26 @@ public class TemplateEngine {
             RuleListTable.add(new ReplaceRule("%doc_text42_2_eng%", dp.tp.p42_2_eng));
             RuleListTable.add(new ReplaceRule("%doc_text42_3%", dp.tp.p42_3));
             RuleListTable.add(new ReplaceRule("%doc_text42_3_eng%", dp.tp.p42_3_eng));
+            RuleListTable.add(new ReplaceRule("%doc_text42_4%", dp.tp.p42_4));
+            RuleListTable.add(new ReplaceRule("%doc_text42_4_eng%", dp.tp.p42_4_eng));
 
             RuleListTable.add(new ReplaceRule("%doc_text51%", dp.tp.p51));
             RuleListTable.add(new ReplaceRule("%doc_text51_eng%", dp.tp.p51_eng));
             RuleListTable.add(new ReplaceRule("%doc_text52%", dp.tp.p52));
             RuleListTable.add(new ReplaceRule("%doc_text52_eng%", dp.tp.p52_eng));
+
+            String text64 = "Попереднiй документ про освiту / Pregoing document on education: ".concat(stud.prevDocument.seria).concat(" ").concat(stud.prevDocument.number);
+            String text64Eng = "-освiтньо-квалiфiкацiйний рiвень / qualification level of education - ";
+            switch (stud.prevDocument.id) {
+                case "2":
+                    text64Eng = text64Eng.concat("Атестат про середню освiту / Atestat");
+                    break;
+                case "6":
+                    text64Eng = text64Eng.concat("Диплом молодшого спецiалiста");
+                    break;
+            }
+            RuleListTable.add(new ReplaceRule("%xml_text64%", text64));
+            RuleListTable.add(new ReplaceRule("%xml_text64_eng%", text64Eng));
 
             Integer marksCount = 0;
             Integer tablePos = 0;

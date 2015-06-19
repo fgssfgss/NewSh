@@ -5,7 +5,6 @@ import java.util.List;
 /**
  * @author Andrew
  */
-
 class Discipline {
 
     String name;

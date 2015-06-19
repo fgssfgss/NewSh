@@ -196,7 +196,7 @@ public class TemplateEngine {
                         tablePos++;
                         RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), tablePos.toString()));
                         RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), mr.subject.concat("/").concat(mr.subject_eng)));
-                        RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), Integer.toString(mr.year)));
+                        RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), mr.year));
                         RuleListTable.add(new ReplaceRule("%m".concat(marksCount.toString()).concat("%"), d.mark));
                         String de = Float.toString(mr.credits).concat(" (").concat(Integer.toString(mr.hours)).concat(")");
                         RuleListTable.add(new ReplaceRule("%de".concat(marksCount.toString()).concat("%"), de));

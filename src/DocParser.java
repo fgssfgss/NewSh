@@ -1,4 +1,6 @@
 
+import com.sun.javafx.collections.MappingChange;
+import com.sun.jndi.toolkit.url.Uri;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
@@ -10,12 +12,16 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystem;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -24,6 +30,14 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 import org.apache.poi.xwpf.usermodel.XWPFSettings;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+
+import static com.sun.jndi.toolkit.url.Uri.*;
 
 /**
  * @author b2soft
@@ -52,8 +66,9 @@ public class DocParser {
     }
 
     public void removePassword() {
-        doc.removeProtectionEnforcement();
+
     }
+
 
     class DocParsed {
 
@@ -187,7 +202,7 @@ public class DocParser {
             tableData = parsedData.substring(0, matcher.end());
         }
 
-        pattern = Pattern.compile("\\t(201\\d\\t.*?\\t.*?\\t.*?\\t\\d{2,3}\\t\\d{1,2})");
+        pattern = Pattern.compile("\\t(201\\d/201\\d\\t.*?\\t.*?\\t.*?\\t\\d{2,3}\\t\\d{1,2})");
         matcher = pattern.matcher(tableData);
         List<String> table = new ArrayList<>();
         while (matcher.find()) {
@@ -197,7 +212,7 @@ public class DocParser {
         int currType = 1;
         for (String e : table) {
             String[] sparse = e.split("\\t");
-            int year = Integer.valueOf(sparse[0]);
+            String year = sparse[0];
             String subject = sparse[1];
             String subject_eng = sparse[2];
 
@@ -228,14 +243,14 @@ public class DocParser {
     public static class MarkParsed {
 
         int type; // 1 - ?????????? ???????? 2 - ???????? 3 - ??????? ?????? (???????) 4 - ?????????? ???????? ?????????
-        int year;
+        String year;
         String subject;
         String subject_eng;
         float credits;
         int hours;
         int mark_type; //0 - ekz, 1 - zalik
 
-        public MarkParsed(int type, int year, String subject, String subject_eng, float credits, int hours, int mark_type) {
+        public MarkParsed(int type, String year, String subject, String subject_eng, float credits, int hours, int mark_type) {
             this.type = type;
             this.year = year;
             this.subject = subject;

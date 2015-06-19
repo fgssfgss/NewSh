@@ -20,13 +20,15 @@ public class Main {
     }
 
     public void run() throws FileNotFoundException, IOException, InvalidFormatException {
-        final String PATH = "doc\\";
+        final String PATH = "D:\\Programming\\NewSh\\doc\\";
         //final String PATH = "E:\\unn\\";
 
         String templateFileName = PATH + "sh12.docx";
         String destination = PATH + "result\\";
         String xmlFileName = PATH + "f1.xml";
-        String docFileName = PATH + "file3.docx";
+        String docFileName = PATH + "test.docx";
+
+        Hack.Hack(docFileName);
 
         TemplateEngine tempEngine = new TemplateEngine();
         tempEngine.setDestination(destination);

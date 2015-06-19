@@ -185,6 +185,11 @@ public class DocParser {
         dp.p42_3_eng = parseRegEx("\u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f\\:\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)20");
         writer.println(dp.p42_3_eng);
 
+        dp.p42_4 = parseRegEx("\u0441\u0443\u0434\u0436\u0435\u043d\u044c\\:\\s\\[4\\.2\\](.*?)21");
+        writer.println(dp.p42_4);
+        dp.p42_4_eng = parseRegEx("\u0441\u0443\u0434\u0436\u0435\u043d\u044c\\:\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)22");
+        writer.println(dp.p42_4_eng);
+
         int end = this.end;
 
         dp.p51 = parseRegEx("\\[5\\.1\\](.*?)25");
@@ -196,6 +201,16 @@ public class DocParser {
         writer.println(dp.p52);
         dp.p52_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[5\\.2\\](.*?)28");
         writer.println(dp.p52_eng);
+
+        dp.p65 = parseRegEx("\\[6\\.1\\](.*?)29");
+        writer.println(dp.p65);
+        dp.p65_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[6\\.1\\](.*?)30");
+        writer.println(dp.p65_eng);
+
+        dp.p65_spec = parseRegEx("\u0446\u0456\u044f\\s\\[6\\.1\\](.*?)31");
+        writer.println(dp.p65_spec);
+        dp.p65_spec_eng = parseRegEx("\u0446\u0456\u044f\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[6\\.1\\](.*?)32");
+        writer.println(dp.p65_spec_eng);
         
         this.end = end;
 
@@ -305,9 +320,15 @@ public class DocParser {
         String p42_2_eng;
         String p42_3;
         String p42_3_eng;
+        String p42_4;
+        String p42_4_eng;
         String p51;
         String p51_eng;
         String p52;
         String p52_eng;
+        String p65;
+        String p65_eng;
+        String p65_spec;
+        String p65_spec_eng;
     }
 }

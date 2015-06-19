@@ -32,7 +32,7 @@ public class Main {
         final String PATH = "doc\\";
         //final String PATH = "E:\\unn\\";
 
-        String templateFileName = PATH + "sh11.docx";
+        String templateFileName = PATH + "sh12.docx";
         String destination = PATH + "result\\";
         String xmlFileName = PATH + "f1.xml";
         String docFileName = PATH + "file2.docx";

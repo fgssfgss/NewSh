@@ -72,6 +72,21 @@ public class TemplateEngine {
         return nMark;
     }
 
+    public String progUnitName(int num) {
+        switch (num) {
+            case 1:
+                return "Теоретичне навчання";
+            case 2:
+                return "Практики";
+            case 3:
+                return "Курсові роботи (проекти)";
+            case 4:
+                return "Підсумкова державна атестація";
+            default:
+                return "";
+        }
+    }
+
     public void parseFiles() {
         XmlParser xParser = new XmlParser(xmlFileName, 1);
         DocParser docParser = new DocParser(docFileName);
@@ -123,7 +138,7 @@ public class TemplateEngine {
             RuleListTable.add(new ReplaceRule("%doc_text42_2_eng%", dp.tp.p42_2_eng));
             RuleListTable.add(new ReplaceRule("%doc_text42_3%", dp.tp.p42_3));
             RuleListTable.add(new ReplaceRule("%doc_text42_3_eng%", dp.tp.p42_3_eng));
-            
+
             RuleListTable.add(new ReplaceRule("%doc_text51%", dp.tp.p51));
             RuleListTable.add(new ReplaceRule("%doc_text51_eng%", dp.tp.p51_eng));
             RuleListTable.add(new ReplaceRule("%doc_text52%", dp.tp.p52));
@@ -143,7 +158,7 @@ public class TemplateEngine {
                         if (!lastProgUnit.equals(d.programUnit)) {
                             progUn++;
                             RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), Integer.toString(progUn)));
-                            RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), " "));
+                            RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), progUnitName(progUn)));
                             RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), " "));
                             RuleListTable.add(new ReplaceRule("%de".concat(marksCount.toString()).concat("%"), " "));
                             RuleListTable.add(new ReplaceRule("%m".concat(marksCount.toString()).concat("%"), " "));

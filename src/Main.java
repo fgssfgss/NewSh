@@ -20,10 +20,10 @@ public class Main {
     }
 
     public void run() throws FileNotFoundException, IOException, InvalidFormatException {
-        final String PATH = "D:\\Programming\\NewSh\\doc\\";
-        //final String PATH = "E:\\unn\\";
+        //final String PATH = "D:\\Programming\\NewSh\\doc\\";
+        final String PATH = "E:\\unn\\";
 
-        String templateFileName = PATH + "sh12.docx";
+        String templateFileName = PATH + "sh13.docx";
         String destination = PATH + "result\\";
         String xmlFileName = PATH + "f1.xml";
         String docFileName = PATH + "test.docx";

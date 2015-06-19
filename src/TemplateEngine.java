@@ -19,6 +19,7 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  * @author Andrew
  */
 public class TemplateEngine {
+
     private boolean st = false;
     private Order order;
     private List<Student> students;
@@ -90,7 +91,6 @@ public class TemplateEngine {
     public void parseFiles() {
         XmlParser xParser = new XmlParser(xmlFileName, 1);
         DocParser docParser = new DocParser(docFileName);
-        docParser.removePassword(); 
         dp = docParser.parse();
         order = xParser.getOrder();
         students = xParser.getStudents();
@@ -148,7 +148,7 @@ public class TemplateEngine {
 
             String text61 = "";
             String text61Eng = "";
-            if(st){
+            if (st) {
                 text61 = "2 роки";
                 text61Eng = "2 years";
             } else {
@@ -157,7 +157,7 @@ public class TemplateEngine {
             }
             RuleListTable.add(new ReplaceRule("%doc_text61%", text61));
             RuleListTable.add(new ReplaceRule("%doc_text61_eng%", text61Eng));
-            
+
             String text64 = "Попереднiй документ про освiту / Pregoing document on education: ".concat(stud.prevDocument.seria).concat(" ").concat(stud.prevDocument.number);
             String text64Eng = "-освiтньо-квалiфiкацiйний рiвень / qualification level of education - ";
             switch (stud.prevDocument.id) {
@@ -171,6 +171,14 @@ public class TemplateEngine {
             RuleListTable.add(new ReplaceRule("%xml_text64%", text64));
             RuleListTable.add(new ReplaceRule("%xml_text64_eng%", text64Eng));
 
+            RuleListTable.add(new ReplaceRule("%xml_text65_enter%", stud.receiptDay));
+            RuleListTable.add(new ReplaceRule("%xml_text65_exit%", order.graduated));
+            
+            RuleListTable.add(new ReplaceRule("%doc_text65%", dp.tp.p65));
+            RuleListTable.add(new ReplaceRule("%doc_text65_eng%", dp.tp.p65_eng));
+            RuleListTable.add(new ReplaceRule("%doc_spec_text65%", dp.tp.p65_spec));
+            RuleListTable.add(new ReplaceRule("%doc_spec_text65_eng%", dp.tp.p65_spec_eng));
+            
             Integer marksCount = 0;
             Integer tablePos = 0;
             Integer progUn = 0;
@@ -198,7 +206,13 @@ public class TemplateEngine {
                         RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), mr.subject.concat("/").concat(mr.subject_eng)));
                         RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), mr.year));
                         RuleListTable.add(new ReplaceRule("%m".concat(marksCount.toString()).concat("%"), d.mark));
-                        String de = Float.toString(mr.credits).concat(" (").concat(Integer.toString(mr.hours)).concat(")");
+                        
+                        String de;
+                        if (mr.credits - Math.floor(mr.credits) > 0.1) {
+                            de = Float.toString(mr.credits).concat(" (").concat(Integer.toString(mr.hours)).concat(")");
+                        } else {
+                            de = Integer.toString((int) mr.credits).concat(" (").concat(Integer.toString(mr.hours)).concat(")");
+                        }
                         RuleListTable.add(new ReplaceRule("%de".concat(marksCount.toString()).concat("%"), de));
                         det += mr.credits;
 

@@ -435,7 +435,6 @@ public class MainFrame extends javax.swing.JFrame {
         jProgressBar1.setMaximum(overall);
         jProgressBar1.setMinimum(completed);
         jProgressBar1.setValue(completed);
-        System.out.println(completed);
     }
 
     /**
@@ -445,7 +444,6 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public void updateProgress(int completed) {
         jProgressBar1.setValue(completed);
-        System.out.println(completed);
     }
 
     /**

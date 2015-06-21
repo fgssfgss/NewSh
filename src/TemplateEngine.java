@@ -109,7 +109,7 @@ public class TemplateEngine extends Thread{
         order = xParser.getOrder();
         
         DocParser docParser = new DocParser(docFileName);
-        dp = docParser.parse();  
+        dp = docParser.parse();
     }
 
     public void process() throws IOException, InvalidFormatException {
@@ -129,7 +129,7 @@ public class TemplateEngine extends Thread{
             RuleListTable.add(new ReplaceRule("%xml_lname_eng%", stud.lastName.en));
             RuleListTable.add(new ReplaceRule("%xml_lname%", stud.lastName.ua));
             RuleListTable.add(new ReplaceRule("%xml_fmname_eng%", stud.firstName.en));
-            RuleListTable.add(new ReplaceRule("%xml_fmname%", stud.firstName.ua));
+            RuleListTable.add(new ReplaceRule("%xml_fmname%", stud.firstName.ua.concat(" ").concat(stud.middleName)));
 
             RuleListTable.add(new ReplaceRule("%xml_honor_eng%", stud.honorEn));
             RuleListTable.add(new ReplaceRule("%xml_honor%", stud.honor));
@@ -175,7 +175,7 @@ public class TemplateEngine extends Thread{
             RuleListTable.add(new ReplaceRule("%doc_text61%", text61));
             RuleListTable.add(new ReplaceRule("%doc_text61_eng%", text61Eng));
 
-            String text64 = "Попереднiй документ про освiту / Pregoing document on education: ".concat(stud.prevDocument.seria).concat(" ").concat(stud.prevDocument.number);
+            String text64 = "Попереднiй документ про освiту / Pregoing document on education: ".concat(stud.prevDocument.seria).concat(" №").concat(stud.prevDocument.number);
             String text64Eng = "-освiтньо-квалiфiкацiйний рiвень / qualification level of education - ";
             switch (stud.prevDocument.id) {
                 case "2":

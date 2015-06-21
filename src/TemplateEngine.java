@@ -3,6 +3,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.usermodel.PositionInParagraph;
@@ -18,8 +20,8 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 /**
  * @author Andrew
  */
-public class TemplateEngine {
-
+public class TemplateEngine extends Thread{
+    private final MainFrame frame;
     private boolean st = false;
     private Order order;
     private List<Student> students;
@@ -30,6 +32,19 @@ public class TemplateEngine {
     private String xmlFileName = "";
     private String docFileName = "";
 
+    public TemplateEngine(MainFrame frame) {
+        this.frame = frame;
+    }
+    
+    public void run(){
+        parseFiles();
+        try {
+            process();
+        } catch (IOException | InvalidFormatException ex) {
+            Logger.getLogger(TemplateEngine.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void setTemplateFileName(String templateFileName) {
         this.templateFileName = templateFileName;
     }
@@ -90,14 +105,16 @@ public class TemplateEngine {
 
     public void parseFiles() {
         XmlParser xParser = new XmlParser(xmlFileName, 1);
-        DocParser docParser = new DocParser(docFileName);
-        dp = docParser.parse();
-        order = xParser.getOrder();
         students = xParser.getStudents();
+        order = xParser.getOrder();
+        
+        DocParser docParser = new DocParser(docFileName);
+        dp = docParser.parse();  
     }
 
     public void process() throws IOException, InvalidFormatException {
-
+        frame.updateProgress(0, students.size());
+        int progress = 0;
         for (Student stud : students) {
             String resultFileName = destination.concat(stud.firstName.en.concat(stud.lastName.en.concat(".docx")));
 
@@ -258,7 +275,8 @@ public class TemplateEngine {
             }
 
             doc.write(new FileOutputStream(resultFileName));
-
+            progress++;
+            frame.updateProgress(progress);
         }
     }
 

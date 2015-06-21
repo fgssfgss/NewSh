@@ -1,15 +1,18 @@
 
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Eugeny
@@ -30,8 +33,7 @@ public class MainFrame extends javax.swing.JFrame {
             return "Каталог";
         }
     };
-    
-    
+
     /**
      * Creates new form MainFrame
      */
@@ -314,7 +316,7 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void chooseWordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseWordButtonActionPerformed
         File wordFile = selectDocument(WORD_FILES);
-        if (wordFile!=null) {
+        if (wordFile != null) {
             wordFileNameTextField.setText(wordFile.getAbsolutePath());
         } else {
             wordFileNameTextField.setText("");
@@ -324,17 +326,17 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void chooseXMLButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseXMLButtonActionPerformed
         File xmlFile = selectDocument(XML_FILES);
-        if (xmlFile!=null) {
+        if (xmlFile != null) {
             xmlFileNameTextField.setText(xmlFile.getAbsolutePath());
         } else {
             xmlFileNameTextField.setText("");
         }
-        chooseOutputDirectoryButton.setEnabled(!xmlFileNameTextField.getText().isEmpty());        
+        chooseOutputDirectoryButton.setEnabled(!xmlFileNameTextField.getText().isEmpty());
     }//GEN-LAST:event_chooseXMLButtonActionPerformed
 
     private void chooseOutputDirectoryButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chooseOutputDirectoryButtonActionPerformed
         File directory = selectDocument(DIRECTORIES);
-        if (directory!=null) {
+        if (directory != null) {
             outputDirectoryNameTextField.setText(directory.getAbsolutePath());
         } else {
             outputDirectoryNameTextField.setText("");
@@ -348,7 +350,7 @@ public class MainFrame extends javax.swing.JFrame {
         String outPath = outputDirectoryNameTextField.getText();
         run(wordPath, xmlPath, outPath);
     }//GEN-LAST:event_makeItButtonActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -411,43 +413,60 @@ public class MainFrame extends javax.swing.JFrame {
     private File selectDocument(FileFilter filter) {
         JFileChooser fc = new JFileChooser();
         fc.setFileFilter(filter);
-        if (filter==DIRECTORIES) {
+        if (filter == DIRECTORIES) {
             fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         }
         int showOpenDialog = fc.showOpenDialog(this);
         if (showOpenDialog == JFileChooser.APPROVE_OPTION) {
             return fc.getSelectedFile();
-        } else return null;        
+        } else {
+            return null;
+        }
     }
 
     /**
-     * Настройка ProgressBar первый раз вызвать его. Потом можно вызывать updateProgess(completed)
+     * Настройка ProgressBar первый раз вызвать его. Потом можно вызывать
+     * updateProgess(completed)
+     *
      * @param completed завершено
      * @param overall всего
      */
     public void updateProgress(int completed, int overall) {
         jProgressBar1.setMaximum(overall);
+        jProgressBar1.setMinimum(completed);
         jProgressBar1.setValue(completed);
+        System.out.println(completed);
     }
-    
+
     /**
      * Упрощенное обновление ProgressBar
+     *
      * @param completed завершено
      */
     public void updateProgress(int completed) {
         jProgressBar1.setValue(completed);
+        System.out.println(completed);
     }
-    
+
     /**
      * Генерация документов
+     *
      * @param wordPath путь к word-файлу
      * @param xmlPath путь к xml-файлу
      * @param outPath путь к каталогу ввыода
      */
     public void run(String wordPath, String xmlPath, String outPath) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        final String PATH = "E:\\unn\\";
+        String templateFileName = PATH + "sh13.docx";
+
+        Hack.Hack(wordPath);
+
+        TemplateEngine tempEngine = new TemplateEngine(this);
+        tempEngine.setDestination(outPath.concat("\\"));
+        tempEngine.setDocFileName(wordPath);
+        tempEngine.setTemplateFileName(templateFileName);
+        tempEngine.setXmlFileName(xmlPath);
+        tempEngine.start();
     }
 
-    
-    
 }

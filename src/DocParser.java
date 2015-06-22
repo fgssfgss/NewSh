@@ -87,6 +87,11 @@ public class DocParser {
         writer.println(dp.p21_eng);
         System.out.println(dp.p21_eng);
 
+        dp.p21_2 = parseRegEx("\u0441\u044f\\)\\s\\[2\\.1\\](.*?)5");
+        writer.println(dp.p21_2);
+        dp.p21_2_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b.\\)\\s\\(\u044f\u043a\u0449\u043e\\s\u043d\u0430\u0434\u0430\u0454\u0442\u044c\u0441\u044f\\)\\s\\[2\\.1\\](.*?)6");
+        writer.println(dp.p21_2_eng);
+
         dp.p22 = parseRegEx("\\[2\\.2\\](.*?)7");
         writer.println(dp.p22);
         dp.p22_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[2\\.2\\](.*?)8");
@@ -243,6 +248,8 @@ public class DocParser {
 
         String p21;
         String p21_eng;
+        String p21_2;
+        String p21_2_eng;
         String p22;
         String p22_eng;
         String p31;

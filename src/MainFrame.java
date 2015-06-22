@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFileChooser;
+import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -348,7 +348,9 @@ public class MainFrame extends javax.swing.JFrame {
         String wordPath = wordFileNameTextField.getText();
         String xmlPath = xmlFileNameTextField.getText();
         String outPath = outputDirectoryNameTextField.getText();
+        makeItButton.setEnabled(false);
         run(wordPath, xmlPath, outPath);
+        makeItButton.setEnabled(true);
     }//GEN-LAST:event_makeItButtonActionPerformed
 
     /**
@@ -454,7 +456,7 @@ public class MainFrame extends javax.swing.JFrame {
      * @param outPath путь к каталогу ввыода
      */
     public void run(String wordPath, String xmlPath, String outPath) {
-        final String PATH = "E:\\unn\\";
+        final String PATH = "doc\\";
         String templateFileName = PATH + "sh13.docx";
 
         Hack.Hack(wordPath);
@@ -467,4 +469,11 @@ public class MainFrame extends javax.swing.JFrame {
         tempEngine.start();
     }
 
+    public JButton getMakeItButton() {
+        return makeItButton;
+    }
+
+    public void setMakeItButton(JButton makeItButton) {
+        this.makeItButton = makeItButton;
+    }
 }

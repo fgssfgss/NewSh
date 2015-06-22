@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<requests>
+	<request>
+		<time_education>Денна</time_education>
+		<faculty uk="Інститут комп’ютерних та інженерно-технологічних наук"/>
+		<issued>01.07.2015</issued>
+		<graduated>30.06.2015</graduated>
+		<receipt_date>01.09.2011</receipt_date>
+		<qualification uk="Бакалавр з комп’ютерних наук"/>
+		<student>
+			<last_name uk="Безуглий" en="Bezuhlyi"/>
+			<first_name uk="Іван" en="Ivan"/>
+			<middle_name uk="Сергійович" en=""/>
+			<sex>чоловік</sex>
+			<birthday>03.02.1991</birthday>
+			<ipn/>
+			<person_document ID="Паспорт" number="219104" seria="МР"/>
+			<diplom foreigner="False" seria="MK" number="12345600"/>
+			<honor>0</honor>
+			<prev_document ID="2" foreigner="False" number="36438000" seria="XE"/>
+			<receipt_date>01.09.2011</receipt_date>
+			<payment>Бюджет</payment>
+			<marks>
+				<discipline name="WЕВ-технології та WЕВ-дизайн" mark="86" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="WЕВ-технології та WЕВ-дизайн" mark="86" national_mark="Відмінно" ects_mark="B" program_unit="3"/>
+				<discipline name="Алгоритмізація та програмування" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Безпека життєдіяльності" mark="86" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Безпека програм та даних" mark="62" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Вища математика" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Вступ до спеціальності інформаційні управляючі системи та технології" mark="61" national_mark="Зараховано" ects_mark="E" program_unit="1"/>
+				<discipline name="Дискретна математика" mark="67" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Дискретні структури" mark="71" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Екологічна етика" mark="62" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Екологія" mark="61" national_mark="Зараховано" ects_mark="E" program_unit="1"/>
+				<discipline name="Економіка та бізнес" mark="96" national_mark="Зараховано" ects_mark="A" program_unit="1"/>
+				<discipline name="Електротехніка та електроніка" mark="61" national_mark="Зараховано" ects_mark="E" program_unit="1"/>
+				<discipline name="Іноземна мова" mark="69" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Інтелектуальний аналіз даних" mark="71" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Історія України" mark="75" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Історія української культури" mark="72" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Кваліфікаційна робота бакалавра" mark="77" national_mark="Добре" ects_mark="C" program_unit="4"/>
+				<discipline name="Комп'ютерна схемотехніка та архітектура комп’ютерів" mark="86" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Комп'ютерні мережі" mark="62" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Комп’ютерна графіка" mark="70" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Конструювання програмного забезпечення" mark="80" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Кросс-платформне програмування" mark="41" national_mark="Не зараховано" ects_mark="F" program_unit="1"/>
+				<discipline name="Математичні методи дослідження операцій" mark="67" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Методи та засоби комп’ютерних інформаційних технологій" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Методи та системи штучного інтелекту" mark="74" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Мова програмування Jаvа" mark="80" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Мова програмування Jаvа" mark="80" national_mark="Добре" ects_mark="C" program_unit="3"/>
+				<discipline name="Моделювання програмного забезпечення інформаційних систем" mark="86" national_mark="Зараховано" ects_mark="A" program_unit="1"/>
+				<discipline name="Моделювання систем" mark="71" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Моделювання систем" mark="71" national_mark="Добре" ects_mark="C" program_unit="3"/>
+				<discipline name="Об'єктно-орієнтоване програмування" mark="74" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Об'єктно-орієнтоване програмування" mark="75" national_mark="Добре" ects_mark="C" program_unit="3"/>
+				<discipline name="Обробка експериментальних даних на ЕОМ" mark="71" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Операційні системи" mark="66" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Організація баз даних та знань" mark="71" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Організація баз даних та знань" mark="71" national_mark="Добре" ects_mark="C" program_unit="3"/>
+				<discipline name="Основи економічної теорії" mark="71" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Основи операційної системи Unіх" mark="66" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Основи організації ЕОМ і мови Аssеmblеr" mark="61" national_mark="Зараховано" ects_mark="E" program_unit="1"/>
+				<discipline name="Основи охорони праці" mark="88" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Основи права" mark="91" national_mark="Зараховано" ects_mark="B" program_unit="1"/>
+				<discipline name="Основи психології" mark="86" national_mark="Зараховано" ects_mark="B" program_unit="1"/>
+				<discipline name="Переддипломна практика" mark="77" national_mark="Добре" ects_mark="C" program_unit="2"/>
+				<discipline name="Підсумкова оцінка" mark="73" national_mark="Добре" ects_mark="C" program_unit="50"/>
+				<discipline name="Політологія" mark="76" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Практика з трудового виховання" mark="77" national_mark="Зараховано" ects_mark="C" program_unit="2"/>
+				<discipline name="Програмне забезпечення розподілених інформаційних систем" mark="77" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Проектування інформаційних систем" mark="66" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Проектування інформаційних систем" mark="71" national_mark="Добре" ects_mark="C" program_unit="3"/>
+				<discipline name="САПР суден" mark="80" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Системний аналіз" mark="71" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Системний аналіз" mark="71" national_mark="Добре" ects_mark="C" program_unit="3"/>
+				<discipline name="Соціологія" mark="96" national_mark="Зараховано" ects_mark="A" program_unit="1"/>
+				<discipline name="Спеціалізовані мови програмування" mark="74" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Структури та організація даних в ЕОМ" mark="61" national_mark="Зараховано" ects_mark="E" program_unit="1"/>
+				<discipline name="Теорія алгоритмів" mark="74" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Теорія і устрій корабля" mark="86" national_mark="Зараховано" ects_mark="B" program_unit="1"/>
+				<discipline name="Теорія ймовірностей, ймовірнісні процеси та математична статистика" mark="71" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Теорія прийняття рішень" mark="74" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Технології захисту інформації" mark="71" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Технології комп’ютерного проектування" mark="83" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Технологічна практика" mark="74" national_mark="Добре" ects_mark="C" program_unit="2"/>
+				<discipline name="Технологія розподілених систем та паралельних обчислень" mark="86" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Технологія створення програмних продуктів" mark="73" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Технологія створення програмних продуктів" mark="73" national_mark="Добре" ects_mark="C" program_unit="3"/>
+				<discipline name="Українська мова (за професійним спрямуванням)" mark="71" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Управління ІТ-проектами" mark="75" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Фізика" mark="79" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Фізичне виховання (позакредитна дисципліна)" mark="79" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Філософія" mark="86" national_mark="Відмінно" ects_mark="A" program_unit="1"/>
+				<discipline name="Функціональне та логічне програмування" mark="67" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Чисельні методи" mark="71" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+			</marks>
+		</student>
+		<student>
+			<last_name uk="Брунченко" en="Brunchenko"/>
+			<first_name uk="Олександр" en="Oleksandr"/>
+			<middle_name uk="Миколайович" en=""/>
+			<sex>чоловік</sex>
+			<birthday>13.05.1993</birthday>
+			<ipn/>
+			<person_document ID="Паспорт" number="351857" seria="ЕР"/>
+			<diplom foreigner="False" seria="MK" number="12457878"/>
+			<honor>0</honor>
+			<prev_document ID="2" foreigner="False" number="40416994" seria="MK"/>
+			<receipt_date>01.09.2011</receipt_date>
+			<payment>Бюджет</payment>
+			<marks>
+				<discipline name="WЕВ-технології та WЕВ-дизайн" mark="70" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="WЕВ-технології та WЕВ-дизайн" mark="75" national_mark="Добре" ects_mark="C" program_unit="3"/>
+				<discipline name="Алгоритмізація та програмування" mark="78" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Безпека життєдіяльності" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Безпека програм та даних" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Вища математика" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Вступ до спеціальності інформаційні управляючі системи та технології" mark="80" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Дискретна математика" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Дискретні структури" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Екологічна етика" mark="61" national_mark="Зараховано" ects_mark="E" program_unit="1"/>
+				<discipline name="Екологія" mark="63" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Економіка та бізнес" mark="85" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Електротехніка та електроніка" mark="66" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Іноземна мова" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Інтелектуальний аналіз даних" mark="66" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Історія України" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Історія української культури" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Кваліфікаційна робота бакалавра" mark="86" national_mark="Відмінно" ects_mark="B" program_unit="4"/>
+				<discipline name="Комп'ютерна схемотехніка та архітектура комп’ютерів" mark="79" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Комп'ютерні мережі" mark="66" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Комп’ютерна графіка" mark="70" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Конструювання програмного забезпечення" mark="70" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Кросс-платформне програмування" mark="66" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Математичні методи дослідження операцій" mark="63" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Методи та засоби комп’ютерних інформаційних технологій" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Методи та системи штучного інтелекту" mark="71" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Мова програмування Jаvа" mark="77" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Мова програмування Jаvа" mark="75" national_mark="Добре" ects_mark="C" program_unit="3"/>
+				<discipline name="Моделювання програмного забезпечення інформаційних систем" mark="70" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Моделювання систем" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Моделювання систем" mark="64" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Об'єктно-орієнтоване програмування" mark="62" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Об'єктно-орієнтоване програмування" mark="62" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Обробка експериментальних даних на ЕОМ" mark="65" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Операційні системи" mark="64" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Організація баз даних та знань" mark="65" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Організація баз даних та знань" mark="64" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Основи економічної теорії" mark="74" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Основи операційної системи Unіх" mark="66" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Основи організації ЕОМ і мови Аssеmblеr" mark="61" national_mark="Зараховано" ects_mark="E" program_unit="1"/>
+				<discipline name="Основи охорони праці" mark="72" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Основи права" mark="71" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Основи психології" mark="86" national_mark="Зараховано" ects_mark="B" program_unit="1"/>
+				<discipline name="Переддипломна практика" mark="74" national_mark="Добре" ects_mark="C" program_unit="2"/>
+				<discipline name="Підсумкова оцінка" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="50"/>
+				<discipline name="Політологія" mark="74" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Практика з трудового виховання" mark="74" national_mark="Зараховано" ects_mark="C" program_unit="2"/>
+				<discipline name="Програмне забезпечення розподілених інформаційних систем" mark="60" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Проектування інформаційних систем" mark="62" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Проектування інформаційних систем" mark="64" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="САПР суден" mark="63" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Системний аналіз" mark="64" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Системний аналіз" mark="65" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Соціологія" mark="64" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Спеціалізовані мови програмування" mark="66" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Структури та організація даних в ЕОМ" mark="79" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Теорія алгоритмів" mark="77" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Теорія і устрій корабля" mark="61" national_mark="Зараховано" ects_mark="E" program_unit="1"/>
+				<discipline name="Теорія ймовірностей, ймовірнісні процеси та математична статистика" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Теорія прийняття рішень" mark="64" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Технології захисту інформації" mark="80" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Технології комп’ютерного проектування" mark="72" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Технологічна практика" mark="74" national_mark="Добре" ects_mark="C" program_unit="2"/>
+				<discipline name="Технологія розподілених систем та паралельних обчислень" mark="70" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Технологія створення програмних продуктів" mark="61" national_mark="Зараховано" ects_mark="E" program_unit="1"/>
+				<discipline name="Технологія створення програмних продуктів" mark="62" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Українська мова (за професійним спрямуванням)" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Управління ІТ-проектами" mark="76" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Фізика" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Фізичне виховання (позакредитна дисципліна)" mark="80" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Філософія" mark="73" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Функціональне та логічне програмування" mark="66" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Чисельні методи" mark="61" national_mark="Зараховано" ects_mark="E" program_unit="1"/>
+			</marks>
+		</student>
+		<student>
+			<last_name uk="Гудима" en="Hudyma"/>
+			<first_name uk="Леонід" en="Leonid"/>
+			<middle_name uk="Анатолійович" en=""/>
+			<sex>чоловік</sex>
+			<birthday>27.10.1994</birthday>
+			<ipn/>
+			<person_document ID="Паспорт" number="405173" seria="ЕР"/>
+			<diplom foreigner="False" seria="MK" number="78451223"/>
+			<honor>0</honor>
+			<prev_document ID="2" foreigner="False" number="40186825" seria="MK"/>
+			<receipt_date>01.09.2011</receipt_date>
+			<payment>Бюджет</payment>
+			<marks>
+				<discipline name="WЕВ-технології та WЕВ-дизайн" mark="77" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="WЕВ-технології та WЕВ-дизайн" mark="69" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Алгоритмізація та програмування" mark="66" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Безпека життєдіяльності" mark="89" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Безпека програм та даних" mark="67" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Вища математика" mark="86" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Вступ до спеціальності інформаційні управляючі системи та технології" mark="99" national_mark="Зараховано" ects_mark="A" program_unit="1"/>
+				<discipline name="Дискретна математика" mark="84" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Дискретні структури" mark="86" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Екологічна етика" mark="63" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Екологія" mark="75" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Економіка та бізнес" mark="86" national_mark="Зараховано" ects_mark="B" program_unit="1"/>
+				<discipline name="Електротехніка та електроніка" mark="98" national_mark="Зараховано" ects_mark="A" program_unit="1"/>
+				<discipline name="Іноземна мова" mark="64" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Інтелектуальний аналіз даних" mark="60" national_mark="Зараховано" ects_mark="E" program_unit="1"/>
+				<discipline name="Історія України" mark="61" national_mark="Задовільно" ects_mark="E" program_unit="1"/>
+				<discipline name="Історія української культури" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Кваліфікаційна робота бакалавра" mark="85" national_mark="Добре" ects_mark="C" program_unit="4"/>
+				<discipline name="Комп'ютерна схемотехніка та архітектура комп’ютерів" mark="64" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Комп'ютерні мережі" mark="66" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Комп’ютерна графіка" mark="77" national_mark="Зараховано" ects_mark="C" program_unit="1"/>
+				<discipline name="Конструювання програмного забезпечення" mark="88" national_mark="Зараховано" ects_mark="B" program_unit="1"/>
+				<discipline name="Кросс-платформне програмування" mark="99" national_mark="Зараховано" ects_mark="A" program_unit="1"/>
+				<discipline name="Математичні методи дослідження операцій" mark="65" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Методи та засоби комп’ютерних інформаційних технологій" mark="64" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Методи та системи штучного інтелекту" mark="62" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Мова програмування Jаvа" mark="63" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Мова програмування Jаvа" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Моделювання програмного забезпечення інформаційних систем" mark="87" national_mark="Зараховано" ects_mark="B" program_unit="1"/>
+				<discipline name="Моделювання систем" mark="86" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Моделювання систем" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Об'єктно-орієнтоване програмування" mark="85" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Об'єктно-орієнтоване програмування" mark="69" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Обробка експериментальних даних на ЕОМ" mark="96" national_mark="Відмінно" ects_mark="A" program_unit="1"/>
+				<discipline name="Операційні системи" mark="87" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Організація баз даних та знань" mark="96" national_mark="Відмінно" ects_mark="A" program_unit="1"/>
+				<discipline name="Організація баз даних та знань" mark="67" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Основи економічної теорії" mark="84" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Основи операційної системи Unіх" mark="96" national_mark="Зараховано" ects_mark="A" program_unit="1"/>
+				<discipline name="Основи організації ЕОМ і мови Аssеmblеr" mark="95" national_mark="Зараховано" ects_mark="B" program_unit="1"/>
+				<discipline name="Основи охорони праці" mark="74" national_mark="Добре" ects_mark="C" program_unit="1"/>
+				<discipline name="Основи права" mark="95" national_mark="Зараховано" ects_mark="B" program_unit="1"/>
+				<discipline name="Основи психології" mark="96" national_mark="Зараховано" ects_mark="A" program_unit="1"/>
+				<discipline name="Переддипломна практика" mark="62" national_mark="Задовільно" ects_mark="D" program_unit="2"/>
+				<discipline name="Підсумкова оцінка" mark="76" national_mark="Добре" ects_mark="C" program_unit="50"/>
+				<discipline name="Політологія" mark="93" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Практика з трудового виховання" mark="65" national_mark="Зараховано" ects_mark="D" program_unit="2"/>
+				<discipline name="Програмне забезпечення розподілених інформаційних систем" mark="92" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Проектування інформаційних систем" mark="91" national_mark="Відмінно" ects_mark="B" program_unit="1"/>
+				<discipline name="Проектування інформаційних систем" mark="69" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="САПР суден" mark="94" national_mark="Зараховано" ects_mark="B" program_unit="1"/>
+				<discipline name="Системний аналіз" mark="98" national_mark="Відмінно" ects_mark="A" program_unit="1"/>
+				<discipline name="Системний аналіз" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Соціологія" mark="97" national_mark="Зараховано" ects_mark="A" program_unit="1"/>
+				<discipline name="Спеціалізовані мови програмування" mark="65" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Структури та організація даних в ЕОМ" mark="64" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Теорія алгоритмів" mark="67" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Теорія і устрій корабля" mark="68" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Теорія ймовірностей, ймовірнісні процеси та математична статистика" mark="66" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Теорія прийняття рішень" mark="69" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Технології захисту інформації" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Технології комп’ютерного проектування" mark="67" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Технологічна практика" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="2"/>
+				<discipline name="Технологія розподілених систем та паралельних обчислень" mark="69" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Технологія створення програмних продуктів" mark="69" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Технологія створення програмних продуктів" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="3"/>
+				<discipline name="Українська мова (за професійним спрямуванням)" mark="69" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Управління ІТ-проектами" mark="68" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Фізика" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Фізичне виховання (позакредитна дисципліна)" mark="68" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Філософія" mark="69" national_mark="Задовільно" ects_mark="D" program_unit="1"/>
+				<discipline name="Функціональне та логічне програмування" mark="68" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+				<discipline name="Чисельні методи" mark="63" national_mark="Зараховано" ects_mark="D" program_unit="1"/>
+			</marks>
+		</student>
+	</request>
+</requests>

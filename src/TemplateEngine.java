@@ -43,6 +43,8 @@ public class TemplateEngine extends Thread{
         } catch (IOException | InvalidFormatException ex) {
             Logger.getLogger(TemplateEngine.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        frame.getMakeItButton().setEnabled(true);
     }
     
     public void setTemplateFileName(String templateFileName) {
@@ -140,6 +142,8 @@ public class TemplateEngine extends Thread{
 
             RuleListTable.add(new ReplaceRule("%doc_text21%", dp.tp.p21));
             RuleListTable.add(new ReplaceRule("%doc_text21_eng%", dp.tp.p21_eng));
+            RuleListTable.add(new ReplaceRule("%doc_text21_2%", dp.tp.p21_2));
+            RuleListTable.add(new ReplaceRule("%doc_text21_2_eng%", dp.tp.p21_2_eng));
             RuleListTable.add(new ReplaceRule("%doc_text22%", dp.tp.p22));
             RuleListTable.add(new ReplaceRule("%doc_text22_eng%", dp.tp.p22_eng));
             RuleListTable.add(new ReplaceRule("%doc_text31%", dp.tp.p31));
@@ -257,8 +261,9 @@ public class TemplateEngine extends Thread{
                 RuleListTable.add(new ReplaceRule("%xml_grade".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%l".concat(i.toString()).concat("%"), " "));
             }
-
+            System.out.println(templateFileName);
             XWPFDocument doc = new XWPFDocument(OPCPackage.open(templateFileName));
+
 
             replaceInParagraphs(RuleListTable, doc.getParagraphs());
 

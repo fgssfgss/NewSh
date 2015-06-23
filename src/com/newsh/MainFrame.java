@@ -1,12 +1,9 @@
+package com.newsh;
 
 import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -475,5 +472,9 @@ public class MainFrame extends javax.swing.JFrame {
 
     public void setMakeItButton(JButton makeItButton) {
         this.makeItButton = makeItButton;
+    }
+
+    public JRadioButton getStGroupRadioButton() {
+        return stGroupRadioButton;
     }
 }

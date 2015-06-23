@@ -1,3 +1,5 @@
+package com.newsh;
+
 import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;

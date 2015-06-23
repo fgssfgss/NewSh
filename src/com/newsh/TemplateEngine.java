@@ -1,3 +1,4 @@
+package com.newsh;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -34,6 +35,7 @@ public class TemplateEngine extends Thread{
 
     public TemplateEngine(MainFrame frame) {
         this.frame = frame;
+        st = frame.getStGroupRadioButton().isSelected();
     }
     
     public void run(){
@@ -170,11 +172,11 @@ public class TemplateEngine extends Thread{
             String text61 = "";
             String text61Eng = "";
             if (st) {
-                text61 = "2 роки";
-                text61Eng = "2 years";
+                text61 = "2 академічні роки";
+                text61Eng = "2 academic years";
             } else {
-                text61 = "4 роки";
-                text61Eng = "4 years";
+                text61 = "4 академічні роки";
+                text61Eng = "4 academic years";
             }
             RuleListTable.add(new ReplaceRule("%doc_text61%", text61));
             RuleListTable.add(new ReplaceRule("%doc_text61_eng%", text61Eng));

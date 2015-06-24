@@ -356,7 +356,6 @@ public class MainFrame extends javax.swing.JFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(getFocusOwner(), "ERROR: " + e.toString(), "ERROR", JOptionPane.ERROR_MESSAGE);
         }
-        makeItButton.setEnabled(true);
     }//GEN-LAST:event_makeItButtonActionPerformed
 
     /**

@@ -172,10 +172,10 @@ public class TemplateEngine extends Thread{
             String text61 = "";
             String text61Eng = "";
             if (st) {
-                text61 = "2 академічні роки";
+                text61 = "2 навчальні роки";
                 text61Eng = "2 academic years";
             } else {
-                text61 = "4 академічні роки";
+                text61 = "4 навчальні роки";
                 text61Eng = "4 academic years";
             }
             RuleListTable.add(new ReplaceRule("%doc_text61%", text61));
@@ -263,9 +263,7 @@ public class TemplateEngine extends Thread{
                 RuleListTable.add(new ReplaceRule("%xml_grade".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%l".concat(i.toString()).concat("%"), " "));
             }
-            System.out.println(templateFileName);
             XWPFDocument doc = new XWPFDocument(OPCPackage.open(templateFileName));
-
 
             replaceInParagraphs(RuleListTable, doc.getParagraphs());
 

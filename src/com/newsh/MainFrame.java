@@ -16,6 +16,8 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class MainFrame extends javax.swing.JFrame {
 
+    private JFileChooser fc;
+
     public final static FileFilter WORD_FILES = new FileNameExtensionFilter("Файлы Word", "docx");
     public final static FileFilter XML_FILES = new FileNameExtensionFilter("Файлы XML", "xml");
     private final static FileFilter DIRECTORIES = new FileFilter() {
@@ -35,6 +37,7 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form MainFrame
      */
     public MainFrame() {
+        fc = new JFileChooser();
         initComponents();
     }
 
@@ -112,22 +115,22 @@ public class MainFrame extends javax.swing.JFrame {
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(le25RadioButton)
-                    .addComponent(gt25RadioButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(le25RadioButton)
+                                        .addComponent(gt25RadioButton))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(le25RadioButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(gt25RadioButton)
-                .addContainerGap(8, Short.MAX_VALUE))
+                jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel7Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(le25RadioButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(gt25RadioButton)
+                                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         makeItButton.setText("Сделать!");
@@ -136,6 +139,7 @@ public class MainFrame extends javax.swing.JFrame {
                 makeItButtonActionPerformed(evt);
             }
         });
+        makeItButton.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -307,6 +311,7 @@ public class MainFrame extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
+        setResizable(false);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -346,7 +351,11 @@ public class MainFrame extends javax.swing.JFrame {
         String xmlPath = xmlFileNameTextField.getText();
         String outPath = outputDirectoryNameTextField.getText();
         makeItButton.setEnabled(false);
-        run(wordPath, xmlPath, outPath);
+        try {
+            run(wordPath, xmlPath, outPath);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(getFocusOwner(), "ERROR: " + e.toString(), "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
         makeItButton.setEnabled(true);
     }//GEN-LAST:event_makeItButtonActionPerformed
 
@@ -410,7 +419,6 @@ public class MainFrame extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private File selectDocument(FileFilter filter) {
-        JFileChooser fc = new JFileChooser();
         fc.setFileFilter(filter);
         if (filter == DIRECTORIES) {
             fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -434,6 +442,10 @@ public class MainFrame extends javax.swing.JFrame {
         jProgressBar1.setMaximum(overall);
         jProgressBar1.setMinimum(completed);
         jProgressBar1.setValue(completed);
+        if (completed==overall) {
+            JOptionPane.showMessageDialog(getFocusOwner(), "Создание файлов успешно завершено", "COMPLETED",JOptionPane.INFORMATION_MESSAGE);
+            jProgressBar1.setValue(0);
+        }
     }
 
     /**
@@ -443,6 +455,11 @@ public class MainFrame extends javax.swing.JFrame {
      */
     public void updateProgress(int completed) {
         jProgressBar1.setValue(completed);
+        if (completed==jProgressBar1.getMaximum()) {
+            JOptionPane.showMessageDialog(getFocusOwner(), "Создание файлов успешно завершено", "COMPLETED",JOptionPane.INFORMATION_MESSAGE);
+            jProgressBar1.setValue(0);
+        }
+
     }
 
     /**
@@ -455,13 +472,17 @@ public class MainFrame extends javax.swing.JFrame {
     public void run(String wordPath, String xmlPath, String outPath) {
         final String PATH = "doc\\";
         String templateFileName = PATH + "sh13.docx";
+        String templateFileNameST = PATH + "sh13_st.docx";
 
         Hack.Hack(wordPath);
 
         TemplateEngine tempEngine = new TemplateEngine(this);
         tempEngine.setDestination(outPath.concat("\\"));
         tempEngine.setDocFileName(wordPath);
-        tempEngine.setTemplateFileName(templateFileName);
+        if (getStGroupRadioButton().isSelected())
+            tempEngine.setTemplateFileName(templateFileNameST);
+        else
+            tempEngine.setTemplateFileName(templateFileName);
         tempEngine.setXmlFileName(xmlPath);
         tempEngine.start();
     }

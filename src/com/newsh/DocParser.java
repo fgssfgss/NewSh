@@ -53,12 +53,12 @@ public class DocParser {
         XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
         parsedData = extractor.getText().replaceAll("(\\r|\\n)", "");
 
-        System.out.println(parsedData);
+        //System.out.println(parsedData);
         
         TextParsed tp = parseText();
 
         parsedData = parsedData.substring(end);
-        System.out.println(end);
+        //System.out.println(end);
 
         List<MarkParsed> mp = null;
 
@@ -84,10 +84,10 @@ public class DocParser {
         writer.println(parsedData);
         dp.p21 = parseRegEx("\\[2\\.1\\](.*?)3");
         writer.println(dp.p21);
-        System.out.println(dp.p21);
+        //System.out.println(dp.p21);
         dp.p21_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[2\\.1\\](.*?)4");
         writer.println(dp.p21_eng);
-        System.out.println(dp.p21_eng);
+        //System.out.println(dp.p21_eng);
 
         dp.p21_2 = parseRegEx("\u0441\u044f\\)\\s\\[2\\.1\\](.*?)5");
         writer.println(dp.p21_2);
@@ -170,7 +170,7 @@ public class DocParser {
         Pattern pattern = Pattern.compile("\\*\\s\u00ab\u041d\u043e\u043c\u0435\u0440\\s\u0437\u0430\\s\u043f\u043e\u0440\u044f\u0434\u043a\u043e\u043c");
         Matcher matcher = pattern.matcher(tableData);
         if (matcher.find()) {
-            System.out.println(end + " " + matcher.end());
+            //System.out.println(end + " " + matcher.end());
             tableData = parsedData.substring(0, matcher.end());
         }
 
@@ -196,7 +196,7 @@ public class DocParser {
             int markType = Integer.valueOf(sparse[5].substring(0, 1));
 
             parsedList.add(new MarkParsed((sparse[5].length() == 2) ? currType++ : currType, year, subject, subject_eng, credits, hours, markType));
-            System.out.println(parsedList.get(parsedList.size() - 1));
+            //System.out.println(parsedList.get(parsedList.size() - 1));
 
         }
         return parsedList;

@@ -1,6 +1,8 @@
 package com.newsh;
 
 
+import java.io.File;
+import java.io.FileInputStream;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
@@ -20,7 +22,7 @@ import java.util.regex.Pattern;
  * @author b2soft
  */
 public class DocParser {
-
+    
     String parsedData;
     String fileName;
     XWPFDocument doc;
@@ -29,10 +31,10 @@ public class DocParser {
     public DocParser(String fileName) {
         this.fileName = fileName;
         try {
-            doc = new XWPFDocument(OPCPackage.open(fileName));
+            FileInputStream is = new FileInputStream(fileName);
+            doc = new XWPFDocument(is);
+            is.close();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InvalidFormatException e) {
             e.printStackTrace();
         }
     }
@@ -67,7 +69,7 @@ public class DocParser {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
+        
         return new DocParsed(tp, mp);
     }
 

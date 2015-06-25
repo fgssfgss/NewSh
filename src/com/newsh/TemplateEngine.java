@@ -279,7 +279,10 @@ public class TemplateEngine extends Thread{
                 }
             }
 
-            doc.write(new FileOutputStream(resultFileName));
+            try (FileOutputStream output = new FileOutputStream(resultFileName)) {
+                doc.write(output);
+                output.flush();
+            }
             progress++;
             frame.updateProgress(progress);
         }

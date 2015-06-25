@@ -464,7 +464,8 @@ public class MainFrame extends javax.swing.JFrame {
         String templateFileName = PATH + "sh13.docx";
         String templateFileNameST = PATH + "sh13_st.docx";
 
-        Hack.Hack(wordPath);
+        Hack h = new Hack();
+        h.Hack(wordPath);
 
         TemplateEngine tempEngine = new TemplateEngine(this);
         tempEngine.setDestination(outPath.concat("\\"));

@@ -1,9 +1,11 @@
 package com.newsh;
 
+import com.sun.nio.zipfs.ZipFileSystemProvider;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystem;
+import java.nio.file.FileSystemAlreadyExistsException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,7 +16,7 @@ import java.util.Map;
  * Created by Bogdan on 6/19/2015.
  */
 public class Hack {
-    static void Hack(String path) {
+    public void Hack(String path) {
         URI docxUri = null; // "jar:file:/C:/... .docx"
         String uriName = path.replaceAll("\\\\", "/");
         docxUri = URI.create("jar:file:///"+uriName);
@@ -33,6 +35,8 @@ public class Hack {
             Files.write(documentXmlPath, content);
             zipFS.close();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (FileSystemAlreadyExistsException e){
             e.printStackTrace();
         }
     }

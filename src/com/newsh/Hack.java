@@ -31,6 +31,7 @@ public class Hack {
             content = xml.getBytes(StandardCharsets.UTF_8);
             Files.delete(documentXmlPath);
             Files.write(documentXmlPath, content);
+            zipFS.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

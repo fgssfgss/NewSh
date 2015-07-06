@@ -120,6 +120,8 @@ public class TemplateEngine extends Thread{
         frame.updateProgress(0, students.size());
         int progress = 0;
         for (Student stud : students) {
+            MyLogger.log(String.format("Creating %d/%d student", progress + 1, students.size()));
+
             String resultFileName = destination.concat(stud.firstName.en.concat(stud.lastName.en.concat(".docx")));
 
             List<ReplaceRule> RuleListTable = new ArrayList<>();
@@ -284,6 +286,7 @@ public class TemplateEngine extends Thread{
                 output.flush();
             }
             progress++;
+            MyLogger.log("DONE");
             frame.updateProgress(progress);
         }
     }

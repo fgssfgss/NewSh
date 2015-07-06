@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="NewSh:jar">
+  <artifact type="jar" build-on-make="true" name="NewSh:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/NewSh_jar</output-path>
     <root id="archive" name="NewSh.jar">
       <element id="module-output" name="NewSh" />

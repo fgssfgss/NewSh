@@ -23,6 +23,7 @@ public class XmlParser {
 
     public XmlParser(String filename, int format) {
         try {
+            MyLogger.log("Initializing factory...");
             File file = new File(filename);
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -35,6 +36,7 @@ public class XmlParser {
                 root = (Element) ((Element) document.getDocumentElement().getElementsByTagName("request").item(0));
                 studentList = root.getElementsByTagName("student");
             }
+            MyLogger.log("DONE");
 
         } catch (ParserConfigurationException | SAXException | IOException ex) {
         }
@@ -64,29 +66,42 @@ public class XmlParser {
 
     public List<Student> getStudents() {
         List<Student> students = new ArrayList<>();
-
+        MyLogger.log("Starting XML parse...");
         for (int index = 0; index < studentList.getLength(); index++) {
+            MyLogger.log(String.format("Parsing %d/%d student", index + 1, studentList.getLength()));
             Element element = (Element) ((Element) studentList.item(index));
             Student student = new Student();
 
             student.firstName.en = element.getElementsByTagName("first_name").item(0).getAttributes().getNamedItem("en").getTextContent();
+            MyLogger.log("firstName.en complete");
             student.firstName.ua = element.getElementsByTagName("first_name").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            MyLogger.log("firstName.ua complete");
 
             student.lastName.en = element.getElementsByTagName("last_name").item(0).getAttributes().getNamedItem("en").getTextContent();
+            MyLogger.log("lastName.en complete");
             student.lastName.ua = element.getElementsByTagName("last_name").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            MyLogger.log("lastName.ua complete");
 
             student.middleName = element.getElementsByTagName("middle_name").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            MyLogger.log("middleName complete");
 
             student.sex = element.getElementsByTagName("sex").item(0).getTextContent();
+            MyLogger.log("sex complete");
 
             student.birthday = element.getElementsByTagName("birthday").item(0).getTextContent();
+            MyLogger.log("birthday complete");
 
             student.personDocument.id = element.getElementsByTagName("person_document").item(0).getAttributes().getNamedItem("ID").getTextContent();
+            MyLogger.log("personDocument.id complete");
             student.personDocument.number = element.getElementsByTagName("person_document").item(0).getAttributes().getNamedItem("number").getTextContent();
+            MyLogger.log("personDocument.number complete");
             student.personDocument.seria = element.getElementsByTagName("person_document").item(0).getAttributes().getNamedItem("seria").getTextContent();
+            MyLogger.log("personDocument.seria complete");
 
             student.diplom.number = element.getElementsByTagName("diplom").item(0).getAttributes().getNamedItem("number").getTextContent();
+            MyLogger.log("diplom.numbera complete");
             student.diplom.seria = element.getElementsByTagName("diplom").item(0).getAttributes().getNamedItem("seria").getTextContent();
+            MyLogger.log("diplom.seria complete");
 
             String h = element.getElementsByTagName("honor").item(0).getTextContent();
 
@@ -98,9 +113,14 @@ public class XmlParser {
                 student.honorEn = "Diploma";
             }
 
+            MyLogger.log("honor + honor.en complete");
+
             student.prevDocument.id = element.getElementsByTagName("prev_document").item(0).getAttributes().getNamedItem("ID").getTextContent();
+            MyLogger.log("prevDocument.id complete");
             student.prevDocument.number = element.getElementsByTagName("prev_document").item(0).getAttributes().getNamedItem("number").getTextContent();
+            MyLogger.log("prevDocument.number complete");
             student.prevDocument.seria = element.getElementsByTagName("prev_document").item(0).getAttributes().getNamedItem("seria").getTextContent();
+            MyLogger.log("prevDocument.seria complete");
 
             if (format == 0) {
                 student.prevQualification.en = element.getElementsByTagName("prev_qualification").item(0).getAttributes().getNamedItem("en").getTextContent();
@@ -110,12 +130,17 @@ public class XmlParser {
             } else if (format == 1) {
                 // empty strings
             }
+
+            MyLogger.log("prevQualification complete");
+
             student.receiptDay = element.getElementsByTagName("receipt_date").item(0).getTextContent();
+            MyLogger.log("receiptDay complete");
 
             student.payment = element.getElementsByTagName("payment").item(0).getTextContent();
+            MyLogger.log("payment complete");
 
             NodeList marks = ((Element) element.getElementsByTagName("marks").item(0)).getElementsByTagName("discipline");
-
+            MyLogger.log("Parsing marks...");
             for (int mindex = 0; mindex < marks.getLength(); mindex++) {
                 Element mark = (Element) (marks.item(mindex));
                 Discipline di = new Discipline();
@@ -126,9 +151,11 @@ public class XmlParser {
                 di.ectsMark = mark.getAttribute("ects_mark");
                 di.programUnit = mark.getAttribute("program_unit");
 
+                MyLogger.log(String.format("Parsing %d/%d mark complete", mindex + 1, marks.getLength()));
+
                 student.marks.add(di);
             }
-
+            MyLogger.log("DONE");
             students.add(student);
         }
 

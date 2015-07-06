@@ -1,10 +1,8 @@
 package com.newsh;
 
 
-import java.io.File;
 import java.io.FileInputStream;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.openxml4j.opc.OPCPackage;
+
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 
@@ -29,6 +27,7 @@ public class DocParser {
     private int end;
 
     public DocParser(String fileName) {
+        MyLogger.log("DocParser: constructor");
         this.fileName = fileName;
         try {
             FileInputStream is = new FileInputStream(fileName);
@@ -51,23 +50,27 @@ public class DocParser {
     }
 
     public DocParsed parse() {
+        MyLogger.log("DocParseD: parse start");
         DocParsed dp;
         XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
         parsedData = extractor.getText().replaceAll("(\\r|\\n)", "");
 
-        //System.out.println(parsedData);
-        
+        MyLogger.log("DocParseD: replace all \\r \\n");
+
+        MyLogger.log("Parsing DOC text...");
         TextParsed tp = parseText();
+        MyLogger.log("Parsing DOC complete");
 
         parsedData = parsedData.substring(end);
-        //System.out.println(end);
 
         List<MarkParsed> mp = null;
 
         try {
+            MyLogger.log("Parsing marks...");
             mp = parseMarks();
+            MyLogger.log("Parsing marks complete");
         } catch (ParseException e) {
-            e.printStackTrace();
+            MyLogger.log("EXPT in marks parsing: " + e.toString());
         }
         
         return new DocParsed(tp, mp);
@@ -82,97 +85,124 @@ public class DocParser {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+
         TextParsed dp = new TextParsed();
         writer.println(parsedData);
         dp.p21 = parseRegEx("\\[2\\.1\\](.*?)3");
+        MyLogger.log("2.1 complete");
         writer.println(dp.p21);
-        //System.out.println(dp.p21);
         dp.p21_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[2\\.1\\](.*?)4");
         writer.println(dp.p21_eng);
-        //System.out.println(dp.p21_eng);
+        MyLogger.log("2.1 eng complete");
 
         dp.p21_2 = parseRegEx("\u0441\u044f\\)\\s\\[2\\.1\\](.*?)5");
+        MyLogger.log("2.1_2 complete");
         writer.println(dp.p21_2);
         dp.p21_2_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b.\\)\\s\\(\u044f\u043a\u0449\u043e\\s\u043d\u0430\u0434\u0430\u0454\u0442\u044c\u0441\u044f\\)\\s\\[2\\.1\\](.*?)6");
+        MyLogger.log("2.1_2 eng complete");
         writer.println(dp.p21_2_eng);
 
         dp.p22 = parseRegEx("\\[2\\.2\\](.*?)7");
+        MyLogger.log("2.2 complete");
         writer.println(dp.p22);
         dp.p22_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[2\\.2\\](.*?)8");
+        MyLogger.log("2.2 eng complete");
         writer.println(dp.p22_eng);
 
         dp.p31 = parseRegEx("\\[3\\.1\\](.*?)9");
+        MyLogger.log("3.1 complete");
         writer.println(dp.p31);
         dp.p31_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[3\\.1\\](.*?)10");
+        MyLogger.log("3.1 eng complete");
         writer.println(dp.p31_eng);
 
         dp.p32 = parseRegEx("\\[3\\.2\\](.*?)11");
+        MyLogger.log("3.2 complete");
         writer.println(dp.p32);
         dp.p32_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[3\\.2\\](.*?)12");
+        MyLogger.log("3.2 eng complete");
         writer.println(dp.p32_eng);
 
         dp.p33 = parseRegEx("\\[3\\.3\\](.*?)13");
+        MyLogger.log("3.3 complete");
         writer.println(dp.p33);
         dp.p33_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[3\\.3\\](.*?)14");
+        MyLogger.log("3.3 eng complete");
         writer.println(dp.p33_eng);
 
         dp.p42_1 = parseRegEx("\\[4\\.2\\](.*?)15");
+        MyLogger.log("4.2_1 complete");
         writer.println(dp.p42_1);
         dp.p42_1_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)16");
+        MyLogger.log("4.2_1 eng complete");
         writer.println(dp.p42_1_eng);
 
         dp.p42_2 = parseRegEx("\u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f\\s\\[4\\.2\\](.*?)17");
+        MyLogger.log("4.2_2 complete");
         writer.println(dp.p42_2);
         dp.p42_2_eng = parseRegEx("\u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)18");
+        MyLogger.log("4.2_2 eng complete");
         writer.println(dp.p42_2_eng);
 
         dp.p42_3 = parseRegEx("\u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f\\:\\s\\[4\\.2\\](.*?)19");
+        MyLogger.log("4.2_3 complete");
         writer.println(dp.p42_3);
         dp.p42_3_eng = parseRegEx("\u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f\\:\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)20");
+        MyLogger.log("4.2_3 eng complete");
         writer.println(dp.p42_3_eng);
 
         dp.p42_4 = parseRegEx("\u0441\u0443\u0434\u0436\u0435\u043d\u044c\\:\\s\\[4\\.2\\](.*?)21");
+        MyLogger.log("4.2_4 complete");
         writer.println(dp.p42_4);
         dp.p42_4_eng = parseRegEx("\u0441\u0443\u0434\u0436\u0435\u043d\u044c\\:\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)22");
+        MyLogger.log("4.2_4 eng complete");
         writer.println(dp.p42_4_eng);
 
         int end = this.end;
 
         dp.p51 = parseRegEx("\\[5\\.1\\](.*?)25");
+        MyLogger.log("5.1 complete");
         writer.println(dp.p51);
         dp.p51_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[5\\.1\\](.*?)26");
+        MyLogger.log("5.1 eng complete");
         writer.println(dp.p51_eng);
 
         dp.p52 = parseRegEx("\\[5\\.2\\](.*?)27");
+        MyLogger.log("5.2 complete");
         writer.println(dp.p52);
         dp.p52_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[5\\.2\\](.*?)28");
+        MyLogger.log("5.2 eng complete");
         writer.println(dp.p52_eng);
 
         dp.p65 = parseRegEx("\\[6\\.1\\](.*?)29");
+        MyLogger.log("6.5 complete");
         writer.println(dp.p65);
         dp.p65_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[6\\.1\\](.*?)30");
+        MyLogger.log("6.5 eng complete");
         writer.println(dp.p65_eng);
 
         dp.p65_spec = parseRegEx("\u0446\u0456\u044f\\s\\[6\\.1\\](.*?)31");
+        MyLogger.log("6.5_spec complete");
         writer.println(dp.p65_spec);
         dp.p65_spec_eng = parseRegEx("\u0446\u0456\u044f\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[6\\.1\\](.*?)32");
+        MyLogger.log("6.5_spec eng complete");
         writer.println(dp.p65_spec_eng);
 
         this.end = end;
 
         writer.close();
+
         return dp;
 
     }
 
     private List<MarkParsed> parseMarks() throws ParseException {
         List<MarkParsed> parsedList = new ArrayList<>();
-
+        MyLogger.log("Preparing table");
         String tableData = parsedData;
         Pattern pattern = Pattern.compile("\\*\\s\u00ab\u041d\u043e\u043c\u0435\u0440\\s\u0437\u0430\\s\u043f\u043e\u0440\u044f\u0434\u043a\u043e\u043c");
         Matcher matcher = pattern.matcher(tableData);
         if (matcher.find()) {
-            //System.out.println(end + " " + matcher.end());
             tableData = parsedData.substring(0, matcher.end());
         }
 
@@ -182,9 +212,12 @@ public class DocParser {
         while (matcher.find()) {
             table.add(matcher.group(1));
         }
+        MyLogger.log("All marks in list now. Starting parse each");
 
         int currType = 1;
+        int i = 1;
         for (String e : table) {
+            MyLogger.log(String.format("Parsing %d/%d", i++, table.size()));
             String[] sparse = e.split("\\t");
             String year = sparse[0];
             String subject = sparse[1];
@@ -198,7 +231,6 @@ public class DocParser {
             int markType = Integer.valueOf(sparse[5].substring(0, 1));
 
             parsedList.add(new MarkParsed((sparse[5].length() == 2) ? currType++ : currType, year, subject, subject_eng, credits, hours, markType));
-            //System.out.println(parsedList.get(parsedList.size() - 1));
 
         }
         return parsedList;

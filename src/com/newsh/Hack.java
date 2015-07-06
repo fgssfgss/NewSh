@@ -1,6 +1,5 @@
 package com.newsh;
 
-import com.sun.nio.zipfs.ZipFileSystemProvider;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
@@ -17,6 +16,7 @@ import java.util.Map;
  */
 public class Hack {
     public void Hack(String path) {
+        MyLogger.log("Hacking DOC...");
         URI docxUri = null; // "jar:file:/C:/... .docx"
         String uriName = path.replaceAll("\\\\", "/");
         docxUri = URI.create("jar:file:///"+uriName);
@@ -27,17 +27,16 @@ public class Hack {
             Path documentXmlPath = zipFS.getPath("/word/settings.xml");
             byte[] content = Files.readAllBytes(documentXmlPath);
             String xml = new String(content, StandardCharsets.UTF_8);
-            //System.out.println(xml);
             xml = xml.replaceAll("<w:documentProtection.*?/>", "");
-            //System.out.println(xml);
             content = xml.getBytes(StandardCharsets.UTF_8);
             Files.delete(documentXmlPath);
             Files.write(documentXmlPath, content);
             zipFS.close();
+            MyLogger.log("DONE");
         } catch (IOException e) {
-            e.printStackTrace();
+            MyLogger.log("EXPT " + e.toString());
         } catch (FileSystemAlreadyExistsException e){
-            e.printStackTrace();
+            MyLogger.log("EXPT " + e.toString());
         }
     }
 }

@@ -103,9 +103,9 @@ public class XmlParser {
             student.diplom.seria = element.getElementsByTagName("diplom").item(0).getAttributes().getNamedItem("seria").getTextContent();
             MyLogger.log("diplom.seria complete");
 
-            String h = element.getElementsByTagName("honor").item(0).getTextContent();
+            student.h = element.getElementsByTagName("honor").item(0).getTextContent();
 
-            if (h.equals("1")) {
+            if (student.h.equals("1")) {
                 student.honor = "Диплом з відзнакою";
                 student.honorEn = "Diploma with honours";
             } else {

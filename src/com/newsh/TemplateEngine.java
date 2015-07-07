@@ -127,7 +127,14 @@ public class TemplateEngine extends Thread{
             List<ReplaceRule> RuleListTable = new ArrayList<>();
 
             
-            RuleListTable.add(new ReplaceRule("%Dname%", frame.getComboBox().getSelectedItem().toString().toUpperCase()));
+            String name = frame.getComboBox().getSelectedItem().toString();
+            if(stud.h.equals("1")){
+                name = name.concat(" з вiдзнакою").toUpperCase();
+            } else {
+                name = name.toUpperCase();
+            }
+            
+            RuleListTable.add(new ReplaceRule("%Dname%", name));
             RuleListTable.add(new ReplaceRule("%xml_form%", order.timeEducation));
 
             if (order.timeEducation.equals("Денна")) {

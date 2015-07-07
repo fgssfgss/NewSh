@@ -26,6 +26,7 @@ public class Student {
     public PrevSpeciality prevSpeciality;
     public String middleName;
     public String sex;
+    public String h;
     public String birthday;
     public String honor;
     public String honorEn;

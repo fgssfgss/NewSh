@@ -205,11 +205,12 @@ public class DocParser {
         if (matcher.find()) {
             tableData = parsedData.substring(0, matcher.end());
         }
-
+        MyLogger.log(String.format("tableData %s", tableData));    
         pattern = Pattern.compile("\\t(201\\d/201\\d\\t.*?\\t.*?\\t.*?\\t\\d{2,3}\\t\\d{1,2})");
         matcher = pattern.matcher(tableData);
         List<String> table = new ArrayList<>();
         while (matcher.find()) {
+            MyLogger.log(String.format("matcher %s", matcher.group(1)));
             table.add(matcher.group(1));
         }
         MyLogger.log("All marks in list now. Starting parse each");
@@ -264,6 +265,8 @@ public class DocParser {
             this.credits = credits;
             this.hours = hours;
             this.mark_type = mark_type;
+            
+            System.out.println(toString());
         }
 
         @Override

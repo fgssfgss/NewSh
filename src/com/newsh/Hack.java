@@ -2,6 +2,7 @@ package com.newsh;
 
 import java.io.IOException;
 import java.net.URI;
+import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystemAlreadyExistsException;
@@ -18,7 +19,7 @@ public class Hack {
     public void Hack(String path) {
         MyLogger.log("Hacking DOC...");
         URI docxUri = null; // "jar:file:/C:/... .docx"
-        String uriName = path.replaceAll("\\\\", "/");
+        String uriName = path.replaceAll("\\\\", "/").replaceAll(" ", "%20");
         docxUri = URI.create("jar:file:///"+uriName);
         //System.out.println(docxUri);
         Map<String, String> zipProperties = new HashMap<>();

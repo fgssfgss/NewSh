@@ -95,9 +95,9 @@ public class TemplateEngine extends Thread{
     public String progUnitName(int num) {
         switch (num) {
             case 1:
-                return "Теоретичне навчання / Theoretical study";
+                return "Теоретичне навчання / Theoretical classes";
             case 2:
-                return "Практики / Practice";
+                return "Практики / Practices";
             case 3:
                 return "Курсові роботи (проекти) / Term papers (projects)";
             case 4:
@@ -220,9 +220,13 @@ public class TemplateEngine extends Thread{
             double det = 0.;
             String lastProgUnit = "";
 
+            MyLogger.log(String.format("Marks №%d", dp.mp.size()));
             for (DocParser.MarkParsed mr : dp.mp) {
                 marksCount++;
+                MyLogger.log(mr.subject);
                 for (Discipline d : stud.marks) {
+                    MyLogger.log(String.format("Disc №%d:%s", marksCount, mr.subject));
+                    
                     if (d.name.equals(mr.subject)) {
                         if (!lastProgUnit.equals(d.programUnit)) {
                             progUn++;
@@ -235,6 +239,9 @@ public class TemplateEngine extends Thread{
                             RuleListTable.add(new ReplaceRule("%l".concat(marksCount.toString()).concat("%"), " "));
                             marksCount++;
                         }
+                        
+                        MyLogger.log(mr.subject);
+                        
                         tablePos++;
                         RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), tablePos.toString()));
                         RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), mr.subject.concat("/").concat(mr.subject_eng)));

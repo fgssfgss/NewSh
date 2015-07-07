@@ -70,7 +70,7 @@ public class Student {
     }
 
     class PrevDocument {
-
+        String foreigner;
         String id;
         String number;
         String seria;

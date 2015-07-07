@@ -95,13 +95,13 @@ public class TemplateEngine extends Thread{
     public String progUnitName(int num) {
         switch (num) {
             case 1:
-                return "Теоретичне навчання";
+                return "Теоретичне навчання / Theoretical study";
             case 2:
-                return "Практики";
+                return "Практики / Practice";
             case 3:
-                return "Курсові роботи (проекти)";
+                return "Курсові роботи (проекти) / Term papers (projects)";
             case 4:
-                return "Підсумкова державна атестація";
+                return "Підсумкова державна атестація / Final state certification";
             default:
                 return "";
         }
@@ -126,6 +126,8 @@ public class TemplateEngine extends Thread{
 
             List<ReplaceRule> RuleListTable = new ArrayList<>();
 
+            
+            RuleListTable.add(new ReplaceRule("%Dname%", frame.getComboBox().getSelectedItem().toString().toUpperCase()));
             RuleListTable.add(new ReplaceRule("%xml_form%", order.timeEducation));
 
             if (order.timeEducation.equals("Денна")) {
@@ -190,7 +192,7 @@ public class TemplateEngine extends Thread{
                     text64Eng = text64Eng.concat("Атестат про середню освiту / Atestat");
                     break;
                 case "6":
-                    text64Eng = text64Eng.concat("Диплом молодшого спецiалiста");
+                    text64Eng = text64Eng.concat("Диплом молодшого спецiалiста / Junior Specialist Diploma");
                     break;
             }
             RuleListTable.add(new ReplaceRule("%xml_text64%", text64));
@@ -217,7 +219,7 @@ public class TemplateEngine extends Thread{
                     if (d.name.equals(mr.subject)) {
                         if (!lastProgUnit.equals(d.programUnit)) {
                             progUn++;
-                            RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), Integer.toString(progUn)));
+                            RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), " "));
                             RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), progUnitName(progUn)));
                             RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), " "));
                             RuleListTable.add(new ReplaceRule("%de".concat(marksCount.toString()).concat("%"), " "));

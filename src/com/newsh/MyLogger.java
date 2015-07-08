@@ -15,7 +15,7 @@ public class MyLogger {
     static {
         debugMode = false;
         try {
-            logFile =  new PrintWriter("log.txt", "UTF-8");
+            logFile = new PrintWriter("log.txt", "UTF-8");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
@@ -25,20 +25,29 @@ public class MyLogger {
     private static boolean debugMode;
     private static PrintWriter logFile;
 
-
-    public static void setDebugMode() { debugMode = true; }
-    public static void setNormalMode() { debugMode = false; }
-    public static void saveLog() { if (logFile != null) logFile.close(); }
-
-    public synchronized static void log(String text) {
-        Date dNow = new Date();
-
-        SimpleDateFormat ft = new SimpleDateFormat ("[HH:mm:ss:SSS]");
-        logFile.println(ft.format(dNow) + " " + text);
-       // System.out.println(ft.format(dNow) + " " + text);
-        logFile.flush();
+    public static void setDebugMode() {
+        debugMode = true;
     }
 
+    public static void setNormalMode() {
+        debugMode = false;
+    }
 
+    public static void saveLog() {
+        if (logFile != null) {
+            logFile.close();
+        }
+    }
+
+    public synchronized static void log(String text) {
+        if (debugMode == false) {
+            return;
+        }
+        Date dNow = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("[HH:mm:ss:SSS]");
+        logFile.println(ft.format(dNow) + " " + text);
+        // System.out.println(ft.format(dNow) + " " + text);
+        logFile.flush();
+    }
 
 }

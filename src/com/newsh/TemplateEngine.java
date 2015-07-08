@@ -38,6 +38,7 @@ public class TemplateEngine extends Thread{
         st = frame.getStGroupRadioButton().isSelected();
     }
     
+    @Override
     public void run(){
         parseFiles();
         try {
@@ -135,6 +136,7 @@ public class TemplateEngine extends Thread{
             }
             
             RuleListTable.add(new ReplaceRule("%Dname%", name));
+            RuleListTable.add(new ReplaceRule("%Ddate%", order.graduated));
             RuleListTable.add(new ReplaceRule("%xml_form%", order.timeEducation));
 
             if (order.timeEducation.equals("Денна")) {

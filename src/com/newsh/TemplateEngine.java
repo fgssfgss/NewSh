@@ -229,7 +229,7 @@ public class TemplateEngine extends Thread{
                 for (Discipline d : stud.marks) {
                     MyLogger.log(String.format("Disc №%d:%s", marksCount, mr.subject));
                     
-                    if (d.name.equals(mr.subject)) {
+                    if (d.name.equals(mr.subject) && d.programUnit.equals(String.valueOf(mr.type))) {
                         if (!lastProgUnit.equals(d.programUnit)) {
                             progUn++;
                             RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), " "));

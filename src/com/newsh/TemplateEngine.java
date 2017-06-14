@@ -234,7 +234,7 @@ public class TemplateEngine extends Thread{
                             progUn++;
                             RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), " "));
                             RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), progUnitName(progUn)));
-                            RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), " "));
+                            //RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), " "));
                             RuleListTable.add(new ReplaceRule("%de".concat(marksCount.toString()).concat("%"), " "));
                             RuleListTable.add(new ReplaceRule("%m".concat(marksCount.toString()).concat("%"), " "));
                             RuleListTable.add(new ReplaceRule("%xml_grade".concat(marksCount.toString()).concat("%"), " "));
@@ -247,7 +247,7 @@ public class TemplateEngine extends Thread{
                         tablePos++;
                         RuleListTable.add(new ReplaceRule("%num".concat(marksCount.toString()).concat("%"), tablePos.toString()));
                         RuleListTable.add(new ReplaceRule("%doc_course".concat(marksCount.toString()).concat("%"), mr.subject.concat("/").concat(mr.subject_eng)));
-                        RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), mr.year));
+                        //RuleListTable.add(new ReplaceRule("%doc_year".concat(marksCount.toString()).concat("%"), mr.year));
                         RuleListTable.add(new ReplaceRule("%m".concat(marksCount.toString()).concat("%"), d.mark));
                         
                         String de;
@@ -277,7 +277,7 @@ public class TemplateEngine extends Thread{
             for (Integer i = marksCount; i <= 80; i++) {
                 RuleListTable.add(new ReplaceRule("%num".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%doc_course".concat(i.toString()).concat("%"), " "));
-                RuleListTable.add(new ReplaceRule("%doc_year".concat(i.toString()).concat("%"), " "));
+                //RuleListTable.add(new ReplaceRule("%doc_year".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%de".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%m".concat(i.toString()).concat("%"), " "));
                 RuleListTable.add(new ReplaceRule("%xml_grade".concat(i.toString()).concat("%"), " "));

@@ -95,66 +95,70 @@ public class DocParser {
         writer.println(dp.p21_eng);
         MyLogger.log("2.1 eng complete");
 
-        dp.p21_2 = parseRegEx("\u0441\u044f\\)\\s\\[2\\.1\\](.*?)5\\.");
-        MyLogger.log("2.1_2 complete");
-        writer.println(dp.p21_2);
-        dp.p21_2_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b.\\)\\s\\(\u044f\u043a\u0449\u043e\\s\u043d\u0430\u0434\u0430\u0454\u0442\u044c\u0441\u044f\\)\\s\\[2\\.1\\](.*?)6\\.");
-        MyLogger.log("2.1_2 eng complete");
-        writer.println(dp.p21_2_eng);
+        //dp.p21_2 = parseRegEx("\u0441\u044f\\)\\s\\[2\\.1\\](.*?)5\\.");
+        //MyLogger.log("2.1_2 complete");
+        //writer.println(dp.p21_2);
+        //dp.p21_2_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b.\\)\\s\\(\u044f\u043a\u0449\u043e\\s\u043d\u0430\u0434\u0430\u0454\u0442\u044c\u0441\u044f\\)\\s\\[2\\.1\\](.*?)6\\.");
+        //MyLogger.log("2.1_2 eng complete");
+        //writer.println(dp.p21_2_eng);
 
-        dp.p22 = parseRegEx("\\[2\\.2\\](.*?)7\\.");
+        dp.p22 = parseRegEx("\\[2\\.2\\](.*?)5\\.");
         MyLogger.log("2.2 complete");
         writer.println(dp.p22);
-        dp.p22_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[2\\.2\\](.*?)8\\.");
+        dp.p22_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[2\\.2\\](.*?)6\\.");
         MyLogger.log("2.2 eng complete");
         writer.println(dp.p22_eng);
 
-        dp.p31 = parseRegEx("\\[3\\.1\\](.*?)9\\.");
+        dp.p31 = parseRegEx("\\[3\\.1\\](.*?)7\\.");
         MyLogger.log("3.1 complete");
         writer.println(dp.p31);
-        dp.p31_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[3\\.1\\](.*?)10\\.");
+        dp.p31_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[3\\.1\\](.*?)8\\.");
         MyLogger.log("3.1 eng complete");
         writer.println(dp.p31_eng);
 
-        dp.p32 = parseRegEx("\\[3\\.2\\](.*?)11\\.");
+        dp.p32 = parseRegEx("\\[3\\.2\\](.*?)9\\.");
         MyLogger.log("3.2 complete");
         writer.println(dp.p32);
-        dp.p32_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[3\\.2\\](.*?)12\\.");
+        dp.p32_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[3\\.2\\](.*?)10\\.");
         MyLogger.log("3.2 eng complete");
         writer.println(dp.p32_eng);
 
-        dp.p33 = parseRegEx("\\[3\\.3\\](.*?)13\\.");
+        dp.p33 = parseRegEx("\\[3\\.3\\](.*?)11\\.");
         MyLogger.log("3.3 complete");
         writer.println(dp.p33);
-        dp.p33_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[3\\.3\\](.*?)14\\.");
+        dp.p33_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[3\\.3\\](.*?)12\\.");
         MyLogger.log("3.3 eng complete");
         writer.println(dp.p33_eng);
 
-        dp.p42_1 = parseRegEx("\\[4\\.2\\](.*?)15\\.");
+        dp.p42_1 = parseRegEx("\\[4\\.2\\]Програма підготовки згідно до навчального плану включає\\:(.*?)Набуті");
         MyLogger.log("4.2_1 complete");
         writer.println(dp.p42_1);
-        dp.p42_1_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)16\\.");
+
+        dp.p42_2 = parseRegEx("Знання і розуміння\\:(.*?)Застосування");
+        MyLogger.log("4.2_2 complete");
+        writer.println(dp.p42_2);
+
+        dp.p42_3 = parseRegEx("Застосування знань і розуміння\\:(.*?)Формування");
+        MyLogger.log("4.2_3 complete");
+        writer.println(dp.p42_3);
+
+        dp.p42_4 = parseRegEx("Формування суджень\\:(.*?)13\\.");
+        MyLogger.log("4.2_4 complete");
+        writer.println(dp.p42_4);
+
+        dp.p42_1_eng = parseRegEx("The programme requirements as prescribed in the Programme Specification includes\\:(.*?)Acquired");
         MyLogger.log("4.2_1 eng complete");
         writer.println(dp.p42_1_eng);
 
-        dp.p42_2 = parseRegEx("\u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f\\s\\[4\\.2\\](.*?)17\\.");
-        MyLogger.log("4.2_2 complete");
-        writer.println(dp.p42_2);
-        dp.p42_2_eng = parseRegEx("\u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)18\\.");
+        dp.p42_2_eng = parseRegEx("Knowledge and understanding\\:(.*?)Application");
         MyLogger.log("4.2_2 eng complete");
         writer.println(dp.p42_2_eng);
 
-        dp.p42_3 = parseRegEx("\u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f\\:\\s\\[4\\.2\\](.*?)19\\.");
-        MyLogger.log("4.2_3 complete");
-        writer.println(dp.p42_3);
-        dp.p42_3_eng = parseRegEx("\u0440\u043e\u0437\u0443\u043c\u0456\u043d\u043d\u044f\\:\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)20\\.");
+        dp.p42_3_eng = parseRegEx("Application of knowledge and understanding\\:(.*?)Making");
         MyLogger.log("4.2_3 eng complete");
         writer.println(dp.p42_3_eng);
 
-        dp.p42_4 = parseRegEx("\u0441\u0443\u0434\u0436\u0435\u043d\u044c\\:\\s\\[4\\.2\\](.*?)21\\.");
-        MyLogger.log("4.2_4 complete");
-        writer.println(dp.p42_4);
-        dp.p42_4_eng = parseRegEx("\u0441\u0443\u0434\u0436\u0435\u043d\u044c\\:\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[4\\.2\\](.*?)22\\.");
+        dp.p42_4_eng = parseRegEx("Making judgements\\:(.*?)14\\.");
         MyLogger.log("4.2_4 eng complete");
         writer.println(dp.p42_4_eng);
 
@@ -200,13 +204,13 @@ public class DocParser {
         List<MarkParsed> parsedList = new ArrayList<>();
         MyLogger.log("Preparing table");
         String tableData = parsedData;
-        Pattern pattern = Pattern.compile("\\*\\s\u00ab\u041d\u043e\u043c\u0435\u0440\\s\u0437\u0430\\s\u043f\u043e\u0440\u044f\u0434\u043a\u043e\u043c");
+        Pattern pattern = Pattern.compile("\\*\\sРозділіть");
         Matcher matcher = pattern.matcher(tableData);
         if (matcher.find()) {
             tableData = parsedData.substring(0, matcher.end());
         }
         MyLogger.log(String.format("tableData %s", tableData));    
-        pattern = Pattern.compile("\\t(201\\d/201\\d\\t.*?\\t.*?\\t.*?\\t\\d{2,3}\\t\\d{1,2})");
+        pattern = Pattern.compile("(.*?\\t.*?\\t.*?\\t\\d{2,3}\\t\\d{1,2})");
         matcher = pattern.matcher(tableData);
         List<String> table = new ArrayList<>();
         while (matcher.find()) {
@@ -218,27 +222,29 @@ public class DocParser {
         int currType = 1;
         int i = 1;
         for (String e : table) {
+             e = e.replaceFirst("\\sДетальні\\sвідомості\\sпро\\sосвітні\\sкомпоненти,\\sкредити\\sЄвропейської\\sкредитної\\sтрансферно-накопичувальної\\sсистеми\\s\\(Таблиця\\)\\s\\[4\\.3\\]Назва\\sдисципліни\\s\\(укр\\.\\)\\sНазва\\sдисципліни\\s\\(англ\\.\\)\\tКредити\\sECTS\\tГодини\\tТип\\sоціню-вання\\s\\*\\*1", "");
+
             MyLogger.log(String.format("Parsing %d/%d", i++, table.size()));
             String[] sparse = e.split("\\t");
-            String year = sparse[0];
-            String subject = sparse[1];
-            String subject_eng = sparse[2];
+            String year = "";//sparse[0];
+            String subject = sparse[0];
+            String subject_eng = sparse[1];
 
             NumberFormat format = NumberFormat.getInstance(Locale.FRANCE);
-            Number number = format.parse(sparse[3]);
+            Number number = format.parse(sparse[2]);
             float credits = number.floatValue();
 
-            int hours = Integer.valueOf(sparse[4]);
-            int markType = Integer.valueOf(sparse[5].substring(0, 1));
+            int hours = Integer.valueOf(sparse[3]);
+            int markType = Integer.valueOf(sparse[4].substring(0, 1));
 
-            parsedList.add(new MarkParsed((sparse[5].length() == 2) ? currType++ : currType, year, subject, subject_eng, credits, hours, markType));
+            parsedList.add(new MarkParsed((sparse[4].length() == 2) ? currType++ : currType, year, subject, subject_eng, credits, hours, markType));
 
         }
         return parsedList;
     }
 
     private String parseRegEx(String regex) {
-        Pattern pattern = Pattern.compile(regex);
+        Pattern pattern = Pattern.compile(regex, Pattern.DOTALL);
         Matcher matcher = pattern.matcher(parsedData);
         if (matcher.find()) {
             end = matcher.end();

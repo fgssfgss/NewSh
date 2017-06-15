@@ -138,6 +138,7 @@ public class TemplateEngine extends Thread{
             RuleListTable.add(new ReplaceRule("%Dname%", name));
             RuleListTable.add(new ReplaceRule("%Ddate%", order.graduated));
             RuleListTable.add(new ReplaceRule("%xml_form%", order.timeEducation));
+            RuleListTable.add(new ReplaceRule("%xml_issued%", order.issued));
 
             if (order.timeEducation.equals("Денна")) {
                 RuleListTable.add(new ReplaceRule("%xml_form_eng%", "Full time"));

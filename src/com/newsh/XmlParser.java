@@ -46,7 +46,7 @@ public class XmlParser {
         Order ord = new Order();
 
         if (format == 0) {
-            Element elem = (Element) ((Element) root.getElementsByTagName("order").item(0));
+            Element elem = (Element) root.getElementsByTagName("order").item(0);
 
             ord.timeEducation = elem.getElementsByTagName("time_education").item(0).getTextContent();
             ord.issued = elem.getElementsByTagName("issued").item(0).getTextContent();

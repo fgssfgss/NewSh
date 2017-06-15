@@ -404,8 +404,8 @@
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
-                <StringItem index="0" value="&#x421;&#x43f;&#x435;&#x446;i&#x430;&#x43b;i&#x441;&#x442;&#x430;"/>
-                <StringItem index="1" value="&#x411;&#x430;&#x43a;&#x430;&#x43b;&#x430;&#x432;&#x440;&#x430;"/>
+                <StringItem index="0" value="&#x411;&#x430;&#x43a;&#x430;&#x43b;&#x430;&#x432;&#x440;&#x430;"/>
+                <StringItem index="1" value="&#x421;&#x43f;&#x435;&#x446;i&#x430;&#x43b;i&#x441;&#x442;&#x430;"/>
                 <StringItem index="2" value="&#x41c;&#x430;&#x433;i&#x441;&#x442;&#x440;&#x430;"/>
               </StringArray>
             </Property>

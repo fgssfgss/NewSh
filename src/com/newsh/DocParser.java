@@ -164,17 +164,17 @@ public class DocParser {
 
         int end = this.end;
 
-        dp.p51 = parseRegEx("\\[5\\.1\\](.*?)25\\.");
+        dp.p51 = parseRegEx("\\[5\\.1\\](.*?)17\\.");
         MyLogger.log("5.1 complete");
         writer.println(dp.p51);
-        dp.p51_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[5\\.1\\](.*?)26\\.");
+        dp.p51_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[5\\.1\\](.*?)18\\.");
         MyLogger.log("5.1 eng complete");
         writer.println(dp.p51_eng);
 
-        dp.p52 = parseRegEx("\\[5\\.2\\](.*?)27\\.");
+        dp.p52 = parseRegEx("\\[5\\.2\\](.*?)19\\.");
         MyLogger.log("5.2 complete");
         writer.println(dp.p52);
-        dp.p52_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[5\\.2\\](.*?)28\\.");
+        dp.p52_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[5\\.2\\](.*?)20\\.");
         MyLogger.log("5.2 eng complete");
         writer.println(dp.p52_eng);
 

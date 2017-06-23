@@ -51,14 +51,16 @@ public class XmlParser {
             ord.timeEducation = elem.getElementsByTagName("time_education").item(0).getTextContent();
             ord.issued = elem.getElementsByTagName("issued").item(0).getTextContent();
             ord.graduated = elem.getElementsByTagName("graduated").item(0).getTextContent();
-            ord.faculty = elem.getElementsByTagName("faculty").item(0).getAttributes().getNamedItem("uk").getTextContent();
-            ord.qualification = elem.getElementsByTagName("qualification").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            ord.receiptDay = root.getElementsByTagName("receipt_date").item(0).getTextContent();
+            //ord.faculty = elem.getElementsByTagName("faculty").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            //ord.qualification = elem.getElementsByTagName("qualification").item(0).getAttributes().getNamedItem("uk").getTextContent();
         } else if (format == 1) {
             ord.timeEducation = root.getElementsByTagName("time_education").item(0).getTextContent();
             ord.issued = root.getElementsByTagName("issued").item(0).getTextContent();
             ord.graduated = root.getElementsByTagName("graduated").item(0).getTextContent();
-            ord.faculty = root.getElementsByTagName("faculty").item(0).getAttributes().getNamedItem("uk").getTextContent();
-            ord.qualification = root.getElementsByTagName("qualification").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            ord.receiptDay = root.getElementsByTagName("receipt_date").item(0).getTextContent();
+            //ord.faculty = root.getElementsByTagName("faculty").item(0).getAttributes().getNamedItem("uk").getTextContent();
+            //ord.qualification = root.getElementsByTagName("qualification").item(0).getAttributes().getNamedItem("uk").getTextContent();
         }
 
         return ord;
@@ -132,9 +134,6 @@ public class XmlParser {
             }
 
             MyLogger.log("prevQualification complete");
-
-            student.receiptDay = element.getElementsByTagName("receipt_date").item(0).getTextContent();
-            MyLogger.log("receiptDay complete");
 
             student.payment = element.getElementsByTagName("payment").item(0).getTextContent();
             MyLogger.log("payment complete");

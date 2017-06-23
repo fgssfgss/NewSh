@@ -5,7 +5,7 @@ package com.newsh;
  */
 
 public class Order {
-
+    String receiptDay;
     String timeEducation;
     String faculty;
     String issued;

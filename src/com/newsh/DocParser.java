@@ -178,17 +178,19 @@ public class DocParser {
         MyLogger.log("5.2 eng complete");
         writer.println(dp.p52_eng);
 
-        dp.p65 = parseRegEx("\\[6\\.1\\](.*?)29\\.");
+        dp.p65 = parseRegEx("\\[6\\.3\\](.*?)21\\.");
         MyLogger.log("6.5 complete");
         writer.println(dp.p65);
-        dp.p65_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[6\\.1\\](.*?)30\\.");
+        dp.p65_eng = parseRegEx("\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[6\\.3\\](.*?)$");
         MyLogger.log("6.5 eng complete");
         writer.println(dp.p65_eng);
 
-        dp.p65_spec = parseRegEx("\u0446\u0456\u044f\\s\\[6\\.1\\](.*?)31\\.");
+        // why we still need this?
+        // TODO: delete some old shit
+        dp.p65_spec = parseRegEx("\u0446\u0456\u044f\\s\\[6\\.3\\](.*?)21\\.");
         MyLogger.log("6.5_spec complete");
         writer.println(dp.p65_spec);
-        dp.p65_spec_eng = parseRegEx("\u0446\u0456\u044f\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[6\\.1\\](.*?)32\\.");
+        dp.p65_spec_eng = parseRegEx("\u0446\u0456\u044f\\s\\(\u0430\u043d\u0433\u043b\\.\\)\\s\\[6\\.3\\](.*?)$");
         MyLogger.log("6.5_spec eng complete");
         writer.println(dp.p65_spec_eng);
 

@@ -208,7 +208,7 @@ public class TemplateEngine extends Thread{
             RuleListTable.add(new ReplaceRule("%xml_text64%", text64));
             RuleListTable.add(new ReplaceRule("%xml_text64_eng%", text64Eng));
 
-            RuleListTable.add(new ReplaceRule("%xml_text65_enter%", stud.receiptDay));
+            RuleListTable.add(new ReplaceRule("%xml_text65_enter%", order.receiptDay));
             RuleListTable.add(new ReplaceRule("%xml_text65_exit%", order.graduated));
             
             RuleListTable.add(new ReplaceRule("%doc_text65%", dp.tp.p65));

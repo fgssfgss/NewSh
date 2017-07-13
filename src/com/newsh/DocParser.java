@@ -211,9 +211,12 @@ public class DocParser {
         if (matcher.find()) {
             tableData = parsedData.substring(0, matcher.end());
         }
-        MyLogger.log(String.format("tableData %s", tableData));    
         pattern = Pattern.compile("(.*?\\t.*?\\t.*?\\t\\d{2,3}\\t\\d{1,2})");
+
+        // make it before foreach, not in there
+        tableData = tableData.replaceFirst("\\sДетальні\\sвідомості\\sпро\\sосвітні\\sкомпоненти,\\sкредити\\sЄвропейської\\sкредитної\\sтрансферно-накопичувальної\\sсистеми\\s\\(Таблиця\\)\\s\\[4\\.3\\]Назва\\sдисципліни\\s\\(укр\\.\\)\\sНазва\\sдисципліни\\s\\(англ\\.\\)\\tКредити\\sECTS\\tГодини\\tТип\\sоціню-вання\\s\\*\\*1", "");
         matcher = pattern.matcher(tableData);
+        MyLogger.log(String.format("tableData %s", tableData));
         List<String> table = new ArrayList<>();
         while (matcher.find()) {
             MyLogger.log(String.format("matcher %s", matcher.group(1)));
@@ -224,8 +227,6 @@ public class DocParser {
         int currType = 1;
         int i = 1;
         for (String e : table) {
-             e = e.replaceFirst("\\sДетальні\\sвідомості\\sпро\\sосвітні\\sкомпоненти,\\sкредити\\sЄвропейської\\sкредитної\\sтрансферно-накопичувальної\\sсистеми\\s\\(Таблиця\\)\\s\\[4\\.3\\]Назва\\sдисципліни\\s\\(укр\\.\\)\\sНазва\\sдисципліни\\s\\(англ\\.\\)\\tКредити\\sECTS\\tГодини\\tТип\\sоціню-вання\\s\\*\\*1", "");
-
             MyLogger.log(String.format("Parsing %d/%d", i++, table.size()));
             String[] sparse = e.split("\\t");
             String year = "";//sparse[0];

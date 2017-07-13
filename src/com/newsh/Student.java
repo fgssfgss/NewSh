@@ -6,17 +6,9 @@ import java.util.List;
 /**
  * @author Andrew
  */
-class Discipline {
 
-    String name;
-    String mark;
-    String nationalMark;
-    String ectsMark;
-    String programUnit;
-}
 
 public class Student {
-
     public FirstName firstName;
     public LastName lastName;
     public PersonDocument personDocument;
@@ -46,26 +38,22 @@ public class Student {
     }
 
     class FirstName {
-
         String ua;
         String en;
     }
 
     class LastName {
-
         String ua;
         String en;
     }
 
     class PersonDocument {
-
         String id;
         String number;
         String seria;
     }
 
     class Diplom {
-
         String seria;
         String number;
     }
@@ -78,13 +66,11 @@ public class Student {
     }
 
     class PrevQualification {
-
         String ua;
         String en;
     }
 
     class PrevSpeciality {
-
         String ua;
         String en;
     }

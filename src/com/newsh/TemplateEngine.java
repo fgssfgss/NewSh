@@ -22,6 +22,17 @@ import org.apache.poi.xwpf.usermodel.XWPFTableRow;
  * @author Andrew
  */
 public class TemplateEngine extends Thread{
+    private class ReplaceRule {
+
+        String src;
+        String dest;
+
+        public ReplaceRule(String src, String dest) {
+            this.src = src;
+            this.dest = dest;
+        }
+    };
+
     private final MainFrame frame;
     private boolean st = false;
     private Order order;
@@ -352,13 +363,4 @@ public class TemplateEngine extends Thread{
     }
 }
 
-class ReplaceRule {
 
-    String src;
-    String dest;
-
-    public ReplaceRule(String src, String dest) {
-        this.src = src;
-        this.dest = dest;
-    }
-};
